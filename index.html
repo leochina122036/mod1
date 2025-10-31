@@ -204,6 +204,7 @@
             border: 5px solid white;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             margin-bottom: 2rem;
+            display: block;
         }
 
         .profile-info {
@@ -505,6 +506,27 @@
             margin-bottom: 1rem;
         }
 
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .project-images img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .project-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
         /* 技能特长 */
         .skills-container {
             display: grid;
@@ -573,6 +595,16 @@
         .certificate-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            padding: 1rem;
         }
 
         .certificate-card h4 {
@@ -833,6 +865,7 @@
             </div>
             <div class="hero-image">
                 <div class="profile-card">
+                    <img src="images/profile.jpg" alt="刘亮" class="profile-image" onerror="this.style.display='none'">
                     <div class="profile-info">
                         <div class="info-grid">
                             <div class="info-item">
@@ -1042,6 +1075,10 @@
                     <div class="project-description">
                         负责配合综合部和采购部，完善现有的机房架构，采购AI配件和设备，搭建企业自己的AI大模型，完成私有化训练和企业功能实现，搭建私有知识库和大模型工业模型，加速企业智能化进步。
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-jiamada-1.jpg" alt="嘉吗达项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jiamada-2.jpg" alt="嘉吗达项目2" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
 
@@ -1054,6 +1091,11 @@
                 <div class="project-body">
                     <div class="project-description">
                         负责焦煤集团 AI 知识库建设，利用超融合硬件，搭建本地化大模型，使用 fastgpt 建设知识库，配合企业内部飞书，可以让员工有问顾和需求，直接通过 AI 来获取。证明人：袁弘正 13608634069
+                    </div>
+                    <div class="project-images">
+                        <img src="images/project-jiaomei-ai-1.jpg" alt="焦煤AI知识库1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jiaomei-ai-2.jpg" alt="焦煤AI知识库2" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jiaomei-ai-3.jpg" alt="焦煤AI知识库3" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>
@@ -1068,6 +1110,10 @@
                     <div class="project-description">
                         负责焦煤集团神华重机厂新办公楼的信息化建设项目，办公楼所有信息化系统和机房部署，实现了办公楼智能化管理和高效运营，神华重机项目信息科：李彦鹏 15838933616
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-shenhua-1.jpg" alt="神华重机项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-shenhua-2.jpg" alt="神华重机项目2" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
 
@@ -1080,6 +1126,11 @@
                 <div class="project-body">
                     <div class="project-description">
                         规划和实施焦作党校综合楼的信息化改造，重新建设全楼 6 层所有信息化系统建设，提升办公管理效率，整合各类信息系统，完善党校办公需求。党校项目负责人：胡鹏 15893047088
+                    </div>
+                    <div class="project-images">
+                        <img src="images/project-dangxiao-1.jpg" alt="党校项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-dangxiao-2.jpg" alt="党校项目2" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-dangxiao-3.jpg" alt="党校项目3" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>
@@ -1120,6 +1171,12 @@
                     <div class="project-description">
                         实施焦作市戒毒所改造项目，立项-可研-初步设计-审计-发改委-财政局-招标，跟随全套流程实施过程。项目内容利用智能化技术建设公安实战平台，建设 1 个平台+12 子系统（通讯指挥、周界、视频监控、建筑品检测、会见系统、出入人员管控、电数化、戒区交互系统等），实现智慧化戒毒所，提升戒毒所的管理水平和服务质量。焦作戒毒所项目负责人：赵长江 18503905591
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-jiedusuo-1.jpg" alt="戒毒所项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jiedusuo-2.jpg" alt="戒毒所项目2" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jiedusuo-3.jpg" alt="戒毒所项目3" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jiedusuo-4.jpg" alt="戒毒所项目4" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
 
@@ -1146,6 +1203,10 @@
                     <div class="project-description">
                         构建马村智慧检察系统建设，配合院区检察官调整系统，提高案件处理的效率和透明度，负责系统的网络安全和数据保护建设。马村检察院信息科负责人：王雪 17639180966
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-jianchayuan-1.jpg" alt="检察院项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jianchayuan-2.jpg" alt="检察院项目2" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
 
@@ -1158,6 +1219,10 @@
                 <div class="project-body">
                     <div class="project-description">
                         部署解放区教育局针对实验小学西校区部署云桌面系统 10 间，涵盖云桌面、班班通、教学一体机、LED 大屏等，为学校提供 IT 数字化建设，确保系统的稳定性和学生的学习体验。实验小学项目负责主任：高雨周 13703918621
+                    </div>
+                    <div class="project-images">
+                        <img src="images/project-xiaoxue-1.jpg" alt="实验小学项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-xiaoxue-2.jpg" alt="实验小学项目2" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>
@@ -1172,6 +1237,10 @@
                     <div class="project-description">
                         公司在建设武涉视频监控系统时，出现很多点位视频频数据不稳定，结构化相机无法采集数据，通过技术手段测算原因，解决由于数据丢失问题，提高公司对于公安部门了应急响应能力。项目负责人：杜长印 19939107936
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-xiwu-1.jpg" alt="修武公安项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-xiwu-2.jpg" alt="修武公安项目2" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
 
@@ -1184,6 +1253,12 @@
                 <div class="project-body">
                     <div class="project-description">
                         利用物联网技术实现监测控制管理群英水渠各个渠道水流、水速、水量和实时监控画面，把这些数据融合成一个大数据平台，实施分析数据，优化水资源的分配和使用。焦作水利局项目负责人：薛建军 13939162210
+                    </div>
+                    <div class="project-images">
+                        <img src="images/project-shuiku-1.jpg" alt="水库渠道项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-shuiku-2.jpg" alt="水库渠道项目2" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-shuiku-3.jpg" alt="水库渠道项目3" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-shuiku-4.jpg" alt="水库渠道项目4" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>
@@ -1198,6 +1273,11 @@
                     <div class="project-description">
                         实施智慧教室的建设 2 间，云桌面教室建设 2 间，并培训教师使用新系统，提升教学质量。焦作市技术学校负责主任：孙主任 15225877091
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-jishixueyuan-1.jpg" alt="技师学院项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jishixueyuan-2.jpg" alt="技师学院项目2" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-jishixueyuan-3.jpg" alt="技师学院项目3" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
 
@@ -1210,6 +1290,10 @@
                 <div class="project-body">
                     <div class="project-description">
                         项目结合 5G、无人机、大数据等技术，构建焦作化山森林防火智能智慧检测平台，通过平台实时查看森林区状况，能够更直观、实时地呈现火灾火场景，火情发展态势、扑火力量分布等情况，通过数据交换和共享，通过大数据平台实时查看，森林防火从"人防"到"技防"的智慧转变。焦作市林业局项目负责人：陈亚强 18519187286
+                    </div>
+                    <div class="project-images">
+                        <img src="images/project-linye-1.jpg" alt="林业5G项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-linye-2.jpg" alt="林业5G项目2" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>
@@ -1249,6 +1333,10 @@
                 <div class="project-body">
                     <div class="project-description">
                         负责云深信服桌面解决方案的部署实现教学和办公资源的集中管理，确保系统安全性和数据的可访问性。
+                    </div>
+                    <div class="project-images">
+                        <img src="images/project-caijing-1.jpg" alt="财经学院项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-caijing-2.jpg" alt="财经学院项目2" onerror="this.parentElement.style.display='none'">
                     </div>
                 </div>
             </div>
@@ -1315,6 +1403,10 @@
                     <div class="project-description">
                         负责弱电系统的整体规划和设计，包括安全监控、网络布线等。协调施工团队，确保工程按照既定标准和时间节点完成。
                     </div>
+                    <div class="project-images">
+                        <img src="images/project-91hospital-1.jpg" alt="91医院项目1" onerror="this.parentElement.style.display='none'">
+                        <img src="images/project-91hospital-2.jpg" alt="91医院项目2" onerror="this.parentElement.style.display='none'">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1358,25 +1450,25 @@
         </div>
         <div class="certificates-grid">
             <div class="certificate-card fade-in">
-                <div class="certificate-icon">🎓</div>
+                <img src="images/certificate-degree.jpg" alt="本科学历证书" class="certificate-image" onerror="this.style.display='none'">
                 <h4>本科学历证书</h4>
                 <div class="certificate-issuer">北京工商大学 - 工商管理专业</div>
             </div>
 
             <div class="certificate-card fade-in">
-                <div class="certificate-icon">🔧</div>
+                <img src="images/certificate-topsec.jpg" alt="天融信认证" class="certificate-image" onerror="this.style.display='none'">
                 <h4>天融信认证售前中级工程师</h4>
                 <div class="certificate-issuer">TOPSEC Certified Pre-sales Professional</div>
             </div>
 
             <div class="certificate-card fade-in">
-                <div class="certificate-icon">📱</div>
+                <img src="images/certificate-baidu.jpg" alt="百度熊掌号证书" class="certificate-image" onerror="this.style.display='none'">
                 <h4>熊掌号100小时通关训练营结业证书</h4>
                 <div class="certificate-issuer">百度公司 & 熊掌号</div>
             </div>
 
             <div class="certificate-card fade-in">
-                <div class="certificate-icon">🤖</div>
+                <img src="images/certificate-ai.jpg" alt="AI开发工程师证书" class="certificate-image" onerror="this.style.display='none'">
                 <h4>人工智能开发工程师</h4>
                 <div class="certificate-issuer">中关村黑马程序员训练营 - AI大模型应用课程</div>
             </div>
