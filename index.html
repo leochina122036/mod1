@@ -12,372 +12,446 @@
         }
 
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #3b82f6;
-            --accent-light: #60a5fa;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --text-light: #94a3b8;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-dark: #0f172a;
-            --border: #e2e8f0;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
+            --primary: #c8102e;
+            --primary-light: #e84545;
+            --secondary: #1a1a1a;
+            --accent: #ff6b6b;
+            --text-dark: #2c3e50;
+            --text-gray: #666666;
+            --text-light: #999999;
+            --bg-white: #ffffff;
+            --bg-gray: #f5f5f5;
+            --border: #e0e0e0;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-secondary);
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-gray);
         }
 
-        /* 导航栏 - 侧边栏风格 */
-        .sidebar {
+        /* 顶部导航 */
+        .navbar {
             position: fixed;
-            left: 0;
             top: 0;
-            height: 100vh;
-            width: 280px;
-            background: var(--bg-dark);
-            color: white;
-            padding: 2rem 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            height: 60px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
             display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-xl);
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .sidebar-header {
-            padding: 0 2rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .sidebar-avatar {
-            width: 120px;
-            height: 120px;
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: block;
-            border: 4px solid rgba(255, 255, 255, 0.2);
             object-fit: cover;
         }
 
-        .sidebar-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar-title {
-            font-size: 0.9rem;
-            text-align: center;
-            color: var(--accent-light);
-            line-height: 1.5;
-        }
-
-        .sidebar-nav {
-            flex: 1;
-            padding: 2rem 0;
-            overflow-y: auto;
-        }
-
-        .sidebar-nav ul {
+        .navbar-menu {
+            display: flex;
             list-style: none;
+            gap: 40px;
         }
 
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 2rem;
-            color: rgba(255, 255, 255, 0.7);
+        .navbar-menu a {
+            color: var(--text-dark);
             text-decoration: none;
-            transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
         }
 
-        .sidebar-nav a:hover,
-        .sidebar-nav a.active {
-            color: white;
-            background: rgba(59, 130, 246, 0.1);
-            border-left: 3px solid var(--accent);
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
         }
 
-        .sidebar-nav .icon {
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
+        .navbar-menu a:hover,
+        .navbar-menu a.active {
+            color: var(--primary);
         }
 
-        .sidebar-footer {
-            padding: 1.5rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .navbar-menu a:hover::after,
+        .navbar-menu a.active::after {
+            width: 100%;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
         }
 
-        .contact-item .icon {
-            margin-right: 0.5rem;
-            color: var(--accent-light);
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
-        /* 主内容区域 */
-        .main-content {
-            margin-left: 280px;
-            min-height: 100vh;
-        }
-
-        /* 英雄区域 */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--secondary) 100%);
-            color: white;
+        /* Banner区域 */
+        .banner {
+            margin-top: 70px;
+            width: 100%;
+            min-height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
-        .hero::before {
+        .banner::before {
             content: '';
             position: absolute;
             top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
+            right: -10%;
+            width: 70%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat;
+            opacity: 0.5;
+            animation: float 15s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, 30px) rotate(5deg); }
+            50% { transform: translate(-20px, 20px) rotate(3deg); }
         }
 
-        .hero-content {
-            max-width: 1000px;
-            padding: 4rem;
+        .banner-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             position: relative;
             z-index: 1;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--accent-light);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
+        .banner-content h1 {
+            font-size: 56px;
             font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+        .banner-subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .hero-stats {
+        .banner-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .banner-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .banner-tag {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .banner-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 25px;
         }
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
+        .stat-item {
+            text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 36px;
             font-weight: 700;
-            color: var(--accent-light);
+            color: white;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 5px;
         }
 
         .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* 章节通用样式 */
-        section {
-            padding: 5rem 4rem;
+        .banner-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 25px;
+        }
+
+        .profile-info {
+            color: white;
+        }
+
+        .profile-info h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            font-weight: 600;
+        }
+
+        /* 内容区域 */
+        .container {
             max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
         }
 
         .section-header {
-            margin-bottom: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .section-badge {
+        .section-tag {
             display: inline-block;
-            background: var(--accent);
+            background: var(--primary);
             color: white;
-            padding: 0.35rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
         }
 
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* 关于我 */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
             align-items: start;
         }
 
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-        }
-
-        .highlight-card strong {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .skills-preview {
+        .about-content {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(255, 107, 107, 0.05) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .skills-box {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 90px;
+        }
+
+        .skills-box h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .skill-tag {
-            display: inline-block;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin: 0.35rem;
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
-            background: var(--accent);
+            background: var(--primary);
             color: white;
-            border-color: var(--accent);
+            border-color: var(--primary);
             transform: translateY(-2px);
         }
 
         /* 工作经历 */
-        .experience-timeline {
+        .timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 40px;
         }
 
-        .experience-timeline::before {
+        .timeline::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: var(--border);
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
         }
 
-        .experience-item {
+        .timeline-item {
             position: relative;
-            margin-bottom: 3rem;
-            padding-left: 2rem;
+            margin-bottom: 40px;
         }
 
-        .experience-item::before {
+        .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2rem;
-            top: 0;
-            width: 12px;
-            height: 12px;
+            left: -47px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 3px solid var(--primary);
             border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid white;
-            box-shadow: 0 0 0 4px var(--bg-secondary);
+            box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
         }
 
         .experience-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 35px;
+            border-radius: 16px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
@@ -391,184 +465,181 @@
             display: flex;
             justify-content: space-between;
             align-items: start;
-            margin-bottom: 1rem;
-        }
-
-        .experience-date {
-            background: var(--bg-secondary);
-            color: var(--accent);
-            padding: 0.35rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .experience-company {
-            font-size: 1.4rem;
+            font-size: 24px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
         }
 
         .experience-position {
-            color: var(--accent);
+            font-size: 16px;
+            color: var(--primary);
             font-weight: 600;
-            margin-bottom: 1rem;
+        }
+
+        .experience-date {
+            background: var(--bg-gray);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.9;
         }
 
         .experience-description ul {
             list-style: none;
-            margin-top: 1rem;
+            margin-top: 15px;
         }
 
         .experience-description li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
+            padding-left: 25px;
+            margin-bottom: 12px;
             position: relative;
-            color: var(--text-secondary);
         }
 
         .experience-description li::before {
-            content: '▹';
+            content: '▸';
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--primary);
             font-weight: bold;
+            font-size: 18px;
         }
 
         /* 项目展示 */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .project-card:hover {
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-lg);
             transform: translateY(-8px);
         }
 
-        .project-image {
+        .project-image-wrapper {
             width: 100%;
-            height: 200px;
-            background: var(--gradient-1);
-            position: relative;
+            height: 220px;
             overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .project-image img {
+        .project-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
-        .project-card:hover .project-image img {
+        .project-card:hover .project-image-wrapper img {
             transform: scale(1.1);
         }
 
         .project-badge {
             position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--accent);
-            padding: 0.35rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            top: 15px;
+            right: 15px;
+            background: white;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 25px;
         }
 
         .project-title {
-            font-size: 1.2rem;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
         .project-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 8px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
         }
 
         .project-tag {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            background: var(--bg-gray);
+            color: var(--text-gray);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
         }
 
         .project-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+            gap: 8px;
+            margin-top: 15px;
         }
 
         .project-gallery img {
             width: 100%;
-            height: 80px;
+            height: 70px;
             object-fit: cover;
             border-radius: 8px;
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .project-gallery img:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow);
         }
 
         /* 教育背景 */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 25px;
         }
 
         .education-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 30px;
+            border-radius: 16px;
             box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
+            border-top: 4px solid var(--primary);
             transition: all 0.3s ease;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-1);
         }
 
         .education-card:hover {
@@ -579,52 +650,106 @@
         .education-icon {
             width: 50px;
             height: 50px;
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .education-period {
-            color: var(--accent);
-            font-size: 0.9rem;
+            color: var(--primary);
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
         }
 
         .education-degree {
-            font-size: 1.3rem;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
         }
 
         .education-school {
-            color: var(--text-secondary);
+            color: var(--text-gray);
             font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 16px;
+            margin-bottom: 15px;
         }
 
         .education-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* 证书展示 */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.02);
+        }
+
+        .certificate-image-box {
+            width: 100%;
+            height: 240px;
+            background: var(--bg-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .certificate-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 15px;
+        }
+
+        .certificate-content {
+            padding: 25px;
+        }
+
+        .certificate-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .certificate-issuer {
+            color: var(--text-gray);
+            font-size: 14px;
         }
 
         /* 技能特长 */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
 
         .skill-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 16px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
@@ -635,105 +760,111 @@
         }
 
         .skill-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-1);
-            border-radius: 15px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-card:nth-child(2) .skill-icon {
-            background: var(--gradient-2);
-        }
-
-        .skill-card:nth-child(3) .skill-icon {
-            background: var(--gradient-3);
+            font-size: 36px;
+            margin-bottom: 25px;
         }
 
         .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+            font-size: 24px;
+            margin-bottom: 18px;
+            color: var(--text-dark);
         }
 
         .skill-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 15px;
+            font-size: 15px;
         }
 
-        /* 证书展示 */
-        .certificates-grid {
+        /* 页脚 */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
         }
 
-        .certificate-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+        .footer-about h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-light);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
             transition: all 0.3s ease;
         }
 
-        .certificate-card:hover {
-            box-shadow: var(--shadow-xl);
-            transform: scale(1.02);
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
         }
 
-        .certificate-image-container {
-            width: 100%;
-            height: 250px;
-            background: var(--bg-secondary);
-            overflow: hidden;
-            position: relative;
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .certificate-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 1rem;
-        }
-
-        .certificate-content {
-            padding: 1.5rem;
-        }
-
-        .certificate-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .certificate-issuer {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* 返回顶部 */
         .back-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 30px;
+            right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--accent);
+            background: var(--primary);
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 20px;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
             z-index: 999;
         }
 
@@ -743,78 +874,144 @@
         }
 
         .back-to-top:hover {
-            background: var(--accent-light);
+            background: var(--primary-light);
             transform: translateY(-5px);
         }
 
         /* 响应式设计 */
-        @media (max-width: 1024px) {
-            .sidebar {
-                transform: translateX(-100%);
+        @media (max-width: 1200px) {
+            .banner-container {
+                gap: 40px;
             }
 
-            .sidebar.active {
-                transform: translateX(0);
+            .banner-content h1 {
+                font-size: 48px;
             }
+        }
 
-            .main-content {
-                margin-left: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-                position: fixed;
-                top: 1rem;
-                left: 1rem;
-                z-index: 1001;
-                width: 50px;
-                height: 50px;
-                background: var(--accent);
-                color: white;
-                border: none;
-                border-radius: 12px;
-                font-size: 1.5rem;
-                cursor: pointer;
+        @media (max-width: 968px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
                 box-shadow: var(--shadow-lg);
+                gap: 0;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-menu li {
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .banner-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 20px;
+            }
+
+            .banner-content h1 {
+                font-size: 40px;
+            }
+
+            .banner-subtitle {
+                font-size: 20px;
+            }
+
+            .banner-description {
+                font-size: 16px;
+            }
+
+            .profile-card {
+                padding: 30px;
+            }
+
+            .profile-photo {
+                width: 180px;
+                height: 180px;
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 3rem 1.5rem;
-            }
-
-            .hero-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
+            .skills-box {
+                position: static;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 36px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 50px 0;
+            }
+
+            .banner {
+                min-height: auto;
+            }
+
+            .banner-content h1 {
+                font-size: 32px;
+            }
+
+            .banner-subtitle {
+                font-size: 18px;
+            }
+
+            .banner-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
             }
 
             .projects-grid,
-            .education-grid {
+            .education-grid,
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline-item::before {
+                left: -32px;
+            }
+
+            .experience-card,
+            .about-content,
+            .skill-card {
+                padding: 25px;
+            }
+
+            .info-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* 加载动画 */
+        /* 动画 */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -825,147 +1022,161 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        .menu-toggle {
-            display: none;
-        }
-
-        /* 图片加载失败处理 */
-        img[onerror] {
-            background: var(--bg-secondary);
-        }
     </style>
 </head>
 <body>
-    <!-- 移动端菜单按钮 -->
-    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-
-    <!-- 侧边栏 -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <img src="images/profile.webp" alt="刘亮" class="sidebar-avatar" onerror="this.style.display='none'">
-            <div class="sidebar-name">刘亮</div>
-            <div class="sidebar-title">
-                资深技术管理专家<br>
-                AI产品开发工程师
+    <!-- 顶部导航 -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <img src="images/profile.webp" alt="刘亮" onerror="this.style.display='none'">
+                <span>刘亮</span>
             </div>
-        </div>
-
-        <nav class="sidebar-nav">
-            <ul>
-                <li><a href="#home" class="active"><span class="icon">🏠</span>首页</a></li>
-                <li><a href="#about"><span class="icon">👤</span>关于我</a></li>
-                <li><a href="#experience"><span class="icon">💼</span>工作经历</a></li>
-                <li><a href="#education"><span class="icon">🎓</span>教育背景</a></li>
-                <li><a href="#projects"><span class="icon">🚀</span>项目经验</a></li>
-                <li><a href="#skills"><span class="icon">⚡</span>技能特长</a></li>
-                <li><a href="#certificates"><span class="icon">🏆</span>专业证书</a></li>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#home" class="active">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#experience">经历</a></li>
+                <li><a href="#education">教育</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#certificates">证书</a></li>
             </ul>
-        </nav>
-
-        <div class="sidebar-footer">
-            <div class="contact-item">
-                <span class="icon">📱</span>
-                <span>13938195869</span>
-            </div>
-            <div class="contact-item">
-                <span class="icon">💬</span>
-                <span>13253688995</span>
-            </div>
-            <div class="contact-item">
-                <span class="icon">📍</span>
-                <span>郑州市中原区</span>
+            <div class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </aside>
+    </nav>
 
-    <!-- 主内容区域 -->
-    <main class="main-content">
-        <!-- 英雄区域 -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="hero-badge">✨ 欢迎来到我的专业简历</div>
-                <h1>技术创新<br>驱动未来</h1>
-                <div class="hero-subtitle">
+    <!-- Banner区域 -->
+    <section id="home" class="banner">
+        <div class="banner-container">
+            <div class="banner-content">
+                <h1>刘亮</h1>
+                <div class="banner-subtitle">资深技术管理专家 & AI产品开发工程师</div>
+                <div class="banner-description">
                     从传统项目管理到AI创新的华丽转身<br>
-                    15年+技术管理经验 | 50+成功项目 | AI/大数据领域专家
+                    深耕信息化与智能化领域15年，致力于用技术创造价值
                 </div>
-
-                <div class="hero-stats">
-                    <div class="stat-card">
+                <div class="banner-tags">
+                    <span class="banner-tag">🤖 AI大模型应用</span>
+                    <span class="banner-tag">📊 项目管理专家</span>
+                    <span class="banner-tag">☁️ 企业数字化</span>
+                    <span class="banner-tag">🔒 信息安全</span>
+                </div>
+                <div class="banner-stats">
+                    <div class="stat-item">
                         <span class="stat-number">15+</span>
                         <span class="stat-label">年工作经验</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-item">
                         <span class="stat-number">50+</span>
                         <span class="stat-label">成功项目</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-item">
                         <span class="stat-number">100+</span>
                         <span class="stat-label">客户合作</span>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="banner-image">
+                <div class="profile-card">
+                    <img src="images/profile.webp" alt="刘亮" class="profile-photo" onerror="this.style.display='none'">
+                    <div class="profile-info">
+                        <h2>刘亮</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">年龄</div>
+                                <div class="info-value">43岁</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">性别</div>
+                                <div class="info-value">男</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">民族</div>
+                                <div class="info-value">汉族</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">驾照</div>
+                                <div class="info-value">C1</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">身高</div>
+                                <div class="info-value">190cm</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">住址</div>
+                                <div class="info-value">郑州中原区</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- 关于我 -->
-        <section id="about">
+    <!-- 关于我 -->
+    <section id="about">
+        <div class="container">
             <div class="section-header">
-                <span class="section-badge">About Me</span>
+                <span class="section-tag">ABOUT ME</span>
                 <h2 class="section-title">关于我</h2>
-                <p class="section-description">从项目管理到AI创新，始终保持对技术的热情与追求</p>
+                <p class="section-subtitle">从项目管理到AI创新，始终保持对技术的热情与追求</p>
             </div>
 
             <div class="about-grid">
-                <div>
-                    <div class="about-text">
-                        <p>
-                            <strong>2011年开始接触项目管理</strong>，开始参与给教育局派送玩具到给大学实施精密仪器安装，一直到开始接触政府级工程，负责过市级政府、公安局、水利局、检察院、市级人民院的工程实施。
-                        </p>
-                        <p>
-                            在与不同部门、不同角色的沟通协作中，我深刻体会到<strong>"人"在项目中的核心地位</strong>——技术可以标准化，但理解、共情与协调，才是推动项目真正落地的关键。
-                        </p>
-                        <div class="highlight-card">
-                            <strong>转型AI领域：</strong> 近年来，随着人工智能技术在各行各业加速落地，我意识到这不仅是趋势。自2024年起，我加入AI产品开发团队，从传统实施到AI创新，这一路走来，变的是技术与场景，不变的是我对"用技术创造价值"的初心与热忱。
-                        </div>
+                <div class="about-content">
+                    <p>
+                        <strong>2011年开始接触项目管理</strong>，从给教育局派送玩具到给大学实施精密仪器安装，再到政府级工程实施。负责过市级政府、公安局、水利局、检察院、市级人民院的工程实施。
+                    </p>
+                    <p>
+                        在与不同部门、不同角色的沟通协作中，我深刻体会到<strong>"人"在项目中的核心地位</strong>——技术可以标准化，但理解、共情与协调，才是推动项目真正落地的关键。这段经历极大地锻炼了我与人沟通的能力，也让我建立起扎实的人际关系网络和跨部门协作的敏感度。
+                    </p>
+                    <div class="highlight-box">
+                        <strong>转型AI领域：</strong> 近年来，随着人工智能技术在各行各业加速落地，我意识到这不仅是趋势。自2024年起，我加入AI产品开发团队，从传统实施到AI创新，这一路走来，变的是技术与场景，不变的是我对"用技术创造价值"的初心与热忱。
                     </div>
+                    <p>
+                        目前专注于AI大模型的企业级落地应用，熟练掌握LangChain4j、FastGPT等框架，具备从需求分析到项目交付的全流程管理能力。
+                    </p>
                 </div>
 
-                <div>
-                    <div class="skills-preview">
-                        <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">核心技能标签</h3>
-                        <div>
-                            <span class="skill-tag">🤖 AI大模型应用</span>
-                            <span class="skill-tag">📊 项目管理</span>
-                            <span class="skill-tag">☁️ 云计算</span>
-                            <span class="skill-tag">🔒 网络安全</span>
-                            <span class="skill-tag">💾 数据库管理</span>
-                            <span class="skill-tag">🏗️ 系统架构</span>
-                            <span class="skill-tag">👥 团队管理</span>
-                            <span class="skill-tag">📱 智慧教育</span>
-                            <span class="skill-tag">🏛️ 政府项目</span>
-                            <span class="skill-tag">🎓 培训讲师</span>
-                            <span class="skill-tag">🔧 技术选型</span>
-                            <span class="skill-tag">📈 业务分析</span>
-                            <span class="skill-tag">🌐 全栈开发</span>
-                            <span class="skill-tag">🚀 产品开发</span>
-                            <span class="skill-tag">💡 技术创新</span>
-                        </div>
+                <div class="skills-box">
+                    <h3>核心技能</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">🤖 AI大模型</span>
+                        <span class="skill-tag">📊 项目管理</span>
+                        <span class="skill-tag">☁️ 云计算</span>
+                        <span class="skill-tag">🔒 信息安全</span>
+                        <span class="skill-tag">💾 数据库</span>
+                        <span class="skill-tag">🏗️ 系统架构</span>
+                        <span class="skill-tag">👥 团队管理</span>
+                        <span class="skill-tag">📱 智慧教育</span>
+                        <span class="skill-tag">🏛️ 政府项目</span>
+                        <span class="skill-tag">🎓 技术培训</span>
+                        <span class="skill-tag">🔧 技术选型</span>
+                        <span class="skill-tag">📈 业务分析</span>
+                        <span class="skill-tag">🌐 全栈开发</span>
+                        <span class="skill-tag">🚀 产品创新</span>
+                        <span class="skill-tag">💡 解决方案</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 工作经历 -->
-        <section id="experience" style="background: white;">
+    <!-- 工作经历 -->
+    <section id="experience" style="background: white;">
+        <div class="container">
             <div class="section-header">
-                <span class="section-badge">Experience</span>
+                <span class="section-tag">EXPERIENCE</span>
                 <h2 class="section-title">工作经历</h2>
-                <p class="section-description">15年职业生涯的精彩历程</p>
+                <p class="section-subtitle">15年职业生涯的精彩历程</p>
             </div>
 
-            <div class="experience-timeline">
-                <div class="experience-item fade-in">
+            <div class="timeline">
+                <div class="timeline-item fade-in">
                     <div class="experience-card">
                         <div class="experience-header">
                             <div>
@@ -976,16 +1187,16 @@
                         </div>
                         <div class="experience-description">
                             <ul>
-                                <li>产品开发全程主导，包括项目立项、产品方案输出、结构设计、设备选型、工程图输出、产品说明书、技术协议等配套资料编制</li>
+                                <li>产品开发全程主导，包括项目立项、产品方案输出、结构设计、设备选型、工程图输出、产品说明书、技术协议等配套资料编制，生产加工等过程技术支持</li>
                                 <li>对接字节包（字节跳动）、千问（阿里巴巴）大模型厂家，沟通商用企业级API对接使用</li>
-                                <li>核心架构设计：基于LangChain4j框架完整AI服务链，整合Qwen3大模型与RAG知识库</li>
+                                <li>核心架构设计：基于LangChain4j框架完整AI服务链，整合Qwen3大模型与RAG知识库筹</li>
                                 <li>新产品成功申请专利，推动企业AI技术落地应用</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="experience-item fade-in">
+                <div class="timeline-item fade-in">
                     <div class="experience-card">
                         <div class="experience-header">
                             <div>
@@ -995,18 +1206,17 @@
                             <div class="experience-date">2019.8 - 2024.5</div>
                         </div>
                         <div class="experience-description">
-                            <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">证明人：周腾 18103916565</p>
+                            <p style="color: #999; font-size: 14px; margin-bottom: 15px;">证明人：周腾 18103916565</p>
                             <ul>
-                                <li>负责信息化项目实施，覆盖政府、学校、部队、公安等多个领域</li>
-                                <li>管理河南政府采购平台网站全部维护工作</li>
-                                <li>负责项目全流程管理：产品安装、验收和培训标准制定</li>
-                                <li>确保项目按时高质量完成落地交付</li>
+                                <li>负责信息化项目实施，政府、学校、部队、公安项目经验</li>
+                                <li>有河南政府采购平台网站全部维护管理</li>
+                                <li>负责项目负责人：项目产品安装、验收和培训标准，项目完成落地负责</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="experience-item fade-in">
+                <div class="timeline-item fade-in">
                     <div class="experience-card">
                         <div class="experience-header">
                             <div>
@@ -1016,52 +1226,53 @@
                             <div class="experience-date">2011.10 - 2019.7</div>
                         </div>
                         <div class="experience-description">
-                            <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">证明人：赵俊玲 13663863069</p>
+                            <p style="color: #999; font-size: 14px; margin-bottom: 15px;">证明人：赵俊玲 13663863069</p>
                             <ul>
-                                <li>负责投标项目整体实施推进，根据业务需求完成项目经理职责</li>
-                                <li>负责公司产品及项目方案，参与并完成重要客户的结构规划、搭建和调整</li>
-                                <li>实施教育行业项目：智慧校园、智慧教室、数据中心等</li>
-                                <li>根据不同类型项目进行制定与针对性的项目方案和专业资料</li>
+                                <li>负责按标项目整体的项目实施推进工作，根据业务的需求完成项目经理职责</li>
+                                <li>负责公司产品及项目的方案，参与并完成一些重要客户的结构规划、搭建和调整</li>
+                                <li>实施教育行业：智慧校园、智慧教室、数据中心项目实施经验</li>
+                                <li>根据不同类型项目进行制慕与有针对性的项目方案和专业资料经验</li>
                                 <li>配合业务部做售前工作，跟踪大客户对业务需求</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="experience-item fade-in">
+                <div class="timeline-item fade-in">
                     <div class="experience-card">
                         <div class="experience-header">
                             <div>
-                                <h3 class="experience-company">北京中关村科贸市场</h3>
-                                <div class="experience-position">自营经营者</div>
+                                <h3 class="experience-company">北京中关村科贸市场自营</h3>
+                                <div class="experience-position">经营者</div>
                             </div>
                             <div class="experience-date">2004.10 - 2012.2</div>
                         </div>
                         <div class="experience-description">
-                            <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">证明人：蔡启贵 13701082139</p>
+                            <p style="color: #999; font-size: 14px; margin-bottom: 15px;">证明人：蔡启贵 13701082139</p>
                             <ul>
                                 <li>负责服务器产品的销售工作，客户咨询、需求分析、产品演示和销售谈判</li>
-                                <li>管理散件批发业务，参与网吧网络工程项目的规划和实施</li>
-                                <li>为客户提供专业的IT解决方案</li>
+                                <li>管理散件批发业务，参与网吧网络工程项目的规划和实施，为客户提供专业的解决方案</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 教育背景 -->
-        <section id="education">
+    <!-- 教育背景 -->
+    <section id="education">
+        <div class="container">
             <div class="section-header">
-                <span class="section-badge">Education</span>
+                <span class="section-tag">EDUCATION</span>
                 <h2 class="section-title">教育背景</h2>
-                <p class="section-description">持续学习，不断进步的学习历程</p>
+                <p class="section-subtitle">持续学习，不断进步的学习历程</p>
             </div>
 
             <div class="education-grid">
                 <div class="education-card fade-in">
                     <div class="education-icon">🎓</div>
-                    <div class="education-period">2000.09 - 2004.08</div>
+                    <div class="education-period">2000年9月 - 2004年8月</div>
                     <h3 class="education-degree">工商管理 本科</h3>
                     <div class="education-school">北京工商大学</div>
                     <div class="education-description">
@@ -1071,7 +1282,7 @@
 
                 <div class="education-card fade-in">
                     <div class="education-icon">💻</div>
-                    <div class="education-period">2008.07 - 2009.06</div>
+                    <div class="education-period">2008年7月 - 2009年6月</div>
                     <h3 class="education-degree">Java PHP 开发</h3>
                     <div class="education-school">北大青鸟</div>
                     <div class="education-description">
@@ -1081,7 +1292,7 @@
 
                 <div class="education-card fade-in">
                     <div class="education-icon">🌐</div>
-                    <div class="education-period">2013.03 - 2013.12</div>
+                    <div class="education-period">2013年3月 - 2013年12月</div>
                     <h3 class="education-degree">网站建设</h3>
                     <div class="education-school">搜外网</div>
                     <div class="education-description">
@@ -1091,7 +1302,7 @@
 
                 <div class="education-card fade-in">
                     <div class="education-icon">📱</div>
-                    <div class="education-period">2018.05 - 2018.09</div>
+                    <div class="education-period">2018年5月 - 2018年9月</div>
                     <h3 class="education-degree">网站推广</h3>
                     <div class="education-school">百度公司</div>
                     <div class="education-description">
@@ -1101,7 +1312,7 @@
 
                 <div class="education-card fade-in">
                     <div class="education-icon">🔒</div>
-                    <div class="education-period">2023.06</div>
+                    <div class="education-period">2023年6月 - 2023年6月</div>
                     <h3 class="education-degree">中级工程师</h3>
                     <div class="education-school">北京天融信</div>
                     <div class="education-description">
@@ -1111,7 +1322,7 @@
 
                 <div class="education-card fade-in">
                     <div class="education-icon">🤖</div>
-                    <div class="education-period">2024.07 - 2024.12</div>
+                    <div class="education-period">2024年7月 - 2024年12月</div>
                     <h3 class="education-degree">AI 开发</h3>
                     <div class="education-school">黑马程序员</div>
                     <div class="education-description">
@@ -1119,67 +1330,59 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 项目经验 -->
-        <section id="projects" style="background: white;">
+    <!-- 项目经验 -->
+    <section id="projects" style="background: white;">
+        <div class="container">
             <div class="section-header">
-                <span class="section-badge">Projects</span>
+                <span class="section-tag">PROJECTS</span>
                 <h2 class="section-title">精选项目</h2>
-                <p class="section-description">50+成功项目中的代表性案例展示</p>
+                <p class="section-subtitle">50+成功项目中的代表性案例展示</p>
             </div>
 
             <div class="projects-grid">
-                <!-- 2025项目 -->
+                <!-- AI项目展示，使用用户提供的实际图片 -->
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-jiamada-1.webp" alt="嘉吗达AI大模型" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%23667eea\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E工业AI大模型%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/ai-app1.webp" alt="AI应用项目" onerror="this.style.display='none'">
                         <span class="project-badge">2025.05</span>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">河南嘉吗达 - 工业AI大模型</h3>
                         <p class="project-description">
-                            负责配合综合部和采购部，完善现有的机房架构，采购AI配件和设备，搭建企业自己的AI大模型，完成私有化训练和企业功能实现。
+                            负责配合综合部和采购部，完善机房架构，搭建企业AI大模型，完成私有化训练和企业功能实现，搭建私有知识库和大模型工业模型。
                         </p>
                         <div class="project-tags">
                             <span class="project-tag">AI大模型</span>
                             <span class="project-tag">私有化部署</span>
-                            <span class="project-tag">工业应用</span>
-                        </div>
-                        <div class="project-gallery">
-                            <img src="images/project-jiamada-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-jiamada-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
+                            <span class="project-tag">知识库</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2024项目 -->
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-jiaomei-ai-1.webp" alt="焦煤AI知识库" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%23f093fb\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3EAI知识库%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project1.webp" alt="焦煤AI" onerror="this.style.display='none'">
                         <span class="project-badge">2024.07</span>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">焦煤集团 - AI数据库建设</h3>
                         <p class="project-description">
-                            利用超融合硬件，搭建本地化大模型，使用 fastgpt 建设知识库，配合企业内部飞书，直接通过 AI 来获取信息。证明人：袁弘正 13608634069
+                            利用超融合硬件，搭建本地化大模型，使用 fastgpt 建设知识库，配合企业内部飞书，员工可直接通过 AI 获取信息。证明人：袁弘正 13608634069
                         </p>
                         <div class="project-tags">
-                            <span class="project-tag">知识库</span>
                             <span class="project-tag">FastGPT</span>
-                            <span class="project-tag">企业级应用</span>
-                        </div>
-                        <div class="project-gallery">
-                            <img src="images/project-jiaomei-ai-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-jiaomei-ai-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-jiaomei-ai-3.webp" alt="项目图3" onerror="this.parentElement.style.display='none'">
+                            <span class="project-tag">知识库</span>
+                            <span class="project-tag">企业应用</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-shenhua-1.webp" alt="神华重机" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%234facfe\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E信息化建设%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project2.webp" alt="神华重机" onerror="this.style.display='none'">
                         <span class="project-badge">2024.05</span>
                     </div>
                     <div class="project-content">
@@ -1192,68 +1395,50 @@
                             <span class="project-tag">机房建设</span>
                             <span class="project-tag">系统集成</span>
                         </div>
-                        <div class="project-gallery">
-                            <img src="images/project-shenhua-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-shenhua-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                        </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-dangxiao-1.webp" alt="党校信息化" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%23667eea\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E党校信息化%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project3.webp" alt="党校项目" onerror="this.style.display='none'">
                         <span class="project-badge">2024.02</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">焦作党校 - 综合楼信息化建设</h3>
+                        <h3 class="project-title">焦作党校 - 综合楼信息化</h3>
                         <p class="project-description">
                             规划和实施综合楼信息化改造，重新建设全楼 6 层所有信息化系统，提升办公管理效率。负责人：胡鹏 15893047088
                         </p>
                         <div class="project-tags">
                             <span class="project-tag">系统升级</span>
                             <span class="project-tag">网络安全</span>
-                            <span class="project-tag">设备部署</span>
-                        </div>
-                        <div class="project-gallery">
-                            <img src="images/project-dangxiao-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-dangxiao-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-dangxiao-3.webp" alt="项目图3" onerror="this.parentElement.style.display='none'">
                         </div>
                     </div>
                 </div>
 
-                <!-- 2023项目 -->
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-jiedusuo-1.webp" alt="戒毒所智慧化" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%23f093fb\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E智慧戒毒所%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project4.webp" alt="戒毒所项目" onerror="this.style.display='none'">
                         <span class="project-badge">2023.06</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">焦作戒毒所 - 智慧改造项目</h3>
+                        <h3 class="project-title">焦作戒毒所 - 智慧改造</h3>
                         <p class="project-description">
-                            建设 1 个平台+12 子系统（通讯指挥、周界、视频监控等），实现智慧化戒毒所。负责人：赵长江 18503905591
+                            建设 1 个平台+12 子系统（通讯指挥、周界、视频监控、建筑品检测等），实现智慧化戒毒所。负责人：赵长江 18503905591
                         </p>
                         <div class="project-tags">
                             <span class="project-tag">智慧监控</span>
-                            <span class="project-tag">系统集成</span>
                             <span class="project-tag">公安项目</span>
-                        </div>
-                        <div class="project-gallery">
-                            <img src="images/project-jiedusuo-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-jiedusuo-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-jiedusuo-3.webp" alt="项目图3" onerror="this.parentElement.style.display='none'">
                         </div>
                     </div>
                 </div>
 
-                <!-- 2021项目 -->
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-jianchayuan-1.webp" alt="检察院项目" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%234facfe\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E智慧检察%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project5.webp" alt="检察院项目" onerror="this.style.display='none'">
                         <span class="project-badge">2021.08</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">马村检察院 - 智慧检察联网</h3>
+                        <h3 class="project-title">马村检察院 - 智慧检察</h3>
                         <p class="project-description">
                             构建智慧检察系统，提高案件处理效率和透明度，负责系统网络安全和数据保护。负责人：王雪 17639180966
                         </p>
@@ -1261,16 +1446,12 @@
                             <span class="project-tag">检察系统</span>
                             <span class="project-tag">网络安全</span>
                         </div>
-                        <div class="project-gallery">
-                            <img src="images/project-jianchayuan-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-jianchayuan-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                        </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-xiaoxue-1.webp" alt="实验小学" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%23667eea\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E智慧教育%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project6.webp" alt="实验小学" onerror="this.style.display='none'">
                         <span class="project-badge">2021.02</span>
                     </div>
                     <div class="project-content">
@@ -1282,21 +1463,16 @@
                             <span class="project-tag">智慧教育</span>
                             <span class="project-tag">云桌面</span>
                         </div>
-                        <div class="project-gallery">
-                            <img src="images/project-xiaoxue-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-xiaoxue-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                        </div>
                     </div>
                 </div>
 
-                <!-- 2020项目 -->
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-linye-1.webp" alt="林业5G" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%23f093fb\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E5G智慧林业%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project7.webp" alt="林业5G" onerror="this.style.display='none'">
                         <span class="project-badge">2020.06</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">焦作林业局 - 5G检测项目</h3>
+                        <h3 class="project-title">焦作林业局 - 5G检测</h3>
                         <p class="project-description">
                             结合 5G、无人机、大数据技术，构建森林防火智能检测平台，实现从"人防"到"技防"的转变。负责人：陈亚强 18519187286
                         </p>
@@ -1305,20 +1481,16 @@
                             <span class="project-tag">无人机</span>
                             <span class="project-tag">大数据</span>
                         </div>
-                        <div class="project-gallery">
-                            <img src="images/project-linye-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-linye-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                        </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/project-shuiku-1.webp" alt="水库智慧化" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect fill=\'%234facfe\' width=\'400\' height=\'200\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\' font-family=\'system-ui\'%3E智慧水利%3C/text%3E%3C/svg%3E'">
+                    <div class="project-image-wrapper">
+                        <img src="images/project8.webp" alt="水库项目" onerror="this.style.display='none'">
                         <span class="project-badge">2020.10</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">群英水库 - 渠道智慧化建设</h3>
+                        <h3 class="project-title">群英水库 - 渠道智慧化</h3>
                         <p class="project-description">
                             利用物联网技术实现监测控制管理，融合数据建立大数据平台，优化水资源分配。负责人：薛建军 13939162210
                         </p>
@@ -1326,22 +1498,19 @@
                             <span class="project-tag">物联网</span>
                             <span class="project-tag">水利工程</span>
                         </div>
-                        <div class="project-gallery">
-                            <img src="images/project-shuiku-1.webp" alt="项目图1" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-shuiku-2.webp" alt="项目图2" onerror="this.parentElement.style.display='none'">
-                            <img src="images/project-shuiku-3.webp" alt="项目图3" onerror="this.parentElement.style.display='none'">
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 技能特长 -->
-        <section id="skills">
+    <!-- 技能特长 -->
+    <section id="skills">
+        <div class="container">
             <div class="section-header">
-                <span class="section-badge">Skills</span>
+                <span class="section-tag">SKILLS</span>
                 <h2 class="section-title">技能特长</h2>
-                <p class="section-description">全方位的技术能力与管理经验</p>
+                <p class="section-subtitle">全方位的技术能力与管理经验</p>
             </div>
 
             <div class="skills-grid">
@@ -1381,20 +1550,22 @@
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 专业证书 -->
-        <section id="certificates" style="background: white;">
+    <!-- 专业证书 -->
+    <section id="certificates" style="background: white;">
+        <div class="container">
             <div class="section-header">
-                <span class="section-badge">Certificates</span>
+                <span class="section-tag">CERTIFICATES</span>
                 <h2 class="section-title">专业证书</h2>
-                <p class="section-description">持续专业发展的见证</p>
+                <p class="section-subtitle">持续专业发展的见证</p>
             </div>
 
             <div class="certificates-grid">
                 <div class="certificate-card fade-in">
-                    <div class="certificate-image-container">
-                        <img src="images/certificate-degree.webp" alt="本科学历证书" class="certificate-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 250\'%3E%3Crect fill=\'%23f8fafc\' width=\'300\' height=\'250\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2364748b\' font-size=\'48\' font-family=\'system-ui\'%3E🎓%3C/text%3E%3C/svg%3E'">
+                    <div class="certificate-image-box">
+                        <img src="images/cert1.webp" alt="本科学历证书" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>🎓</div>'">
                     </div>
                     <div class="certificate-content">
                         <h4 class="certificate-title">本科学历证书</h4>
@@ -1403,8 +1574,8 @@
                 </div>
 
                 <div class="certificate-card fade-in">
-                    <div class="certificate-image-container">
-                        <img src="images/certificate-topsec.webp" alt="天融信认证" class="certificate-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 250\'%3E%3Crect fill=\'%23f8fafc\' width=\'300\' height=\'250\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2364748b\' font-size=\'48\' font-family=\'system-ui\'%3E🔧%3C/text%3E%3C/svg%3E'">
+                    <div class="certificate-image-box">
+                        <img src="images/cert2.webp" alt="天融信认证" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>🔧</div>'">
                     </div>
                     <div class="certificate-content">
                         <h4 class="certificate-title">天融信认证售前中级工程师</h4>
@@ -1413,8 +1584,8 @@
                 </div>
 
                 <div class="certificate-card fade-in">
-                    <div class="certificate-image-container">
-                        <img src="images/certificate-baidu.webp" alt="百度证书" class="certificate-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 250\'%3E%3Crect fill=\'%23f8fafc\' width=\'300\' height=\'250\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2364748b\' font-size=\'48\' font-family=\'system-ui\'%3E📱%3C/text%3E%3C/svg%3E'">
+                    <div class="certificate-image-box">
+                        <img src="images/cert3.webp" alt="百度证书" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>📱</div>'">
                     </div>
                     <div class="certificate-content">
                         <h4 class="certificate-title">熊掌号100小时通关训练营</h4>
@@ -1423,8 +1594,8 @@
                 </div>
 
                 <div class="certificate-card fade-in">
-                    <div class="certificate-image-container">
-                        <img src="images/certificate-ai.webp" alt="AI开发证书" class="certificate-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 250\'%3E%3Crect fill=\'%23f8fafc\' width=\'300\' height=\'250\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2364748b\' font-size=\'48\' font-family=\'system-ui\'%3E🤖%3C/text%3E%3C/svg%3E'">
+                    <div class="certificate-image-box">
+                        <img src="images/cert4.webp" alt="AI开发证书" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>🤖</div>'">
                     </div>
                     <div class="certificate-content">
                         <h4 class="certificate-title">人工智能开发工程师</h4>
@@ -1432,17 +1603,67 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>刘亮</h3>
+                    <p>资深技术管理专家 & AI产品开发工程师</p>
+                    <p>15年+技术管理经验，专注于AI大模型企业级落地应用、信息化项目实施与团队管理。从传统项目管理到AI创新，始终保持对技术的热情与追求。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#about">关于我</a></li>
+                        <li><a href="#experience">工作经历</a></li>
+                        <li><a href="#projects">项目经验</a></li>
+                        <li><a href="#skills">技能特长</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>联系方式</h4>
+                    <div class="footer-contact">📱 13938195869</div>
+                    <div class="footer-contact">💬 13253688995</div>
+                    <div class="footer-contact">📍 郑州市中原区</div>
+                    <div class="footer-contact">🚗 C1驾照</div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 刘亮个人简历 | 所有权利保留</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- 返回顶部 -->
-    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
     <script>
-        // 侧边栏切换
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
+        // 移动端菜单切换
+        function toggleMobileMenu() {
+            document.getElementById('navbarMenu').classList.toggle('active');
         }
+
+        // 滚动时导航栏效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // 返回顶部按钮
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
 
         // 滚动动画
         const observerOptions = {
@@ -1464,14 +1685,13 @@
 
         // 导航激活状态
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const navLinks = document.querySelectorAll('.navbar-menu a');
 
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1484,16 +1704,6 @@
             });
         });
 
-        // 返回顶部按钮
-        const backToTopButton = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1504,24 +1714,10 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // 移动端关闭侧边栏
-                    if (window.innerWidth <= 1024) {
-                        document.getElementById('sidebar').classList.remove('active');
-                    }
+                    // 关闭移动端菜单
+                    document.getElementById('navbarMenu').classList.remove('active');
                 }
             });
-        });
-
-        // 点击外部关闭侧边栏
-        document.addEventListener('click', (e) => {
-            const sidebar = document.getElementById('sidebar');
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (window.innerWidth <= 1024 && 
-                !sidebar.contains(e.target) && 
-                !menuToggle.contains(e.target) && 
-                sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-            }
         });
     </script>
 </body>
