@@ -695,6 +695,31 @@
             margin-bottom: 50px;
         }
 
+        /* 项目图片画廊 */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--bg-light);
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
         .project-card {
             background: white;
             border-radius: 16px;
@@ -1510,28 +1535,29 @@
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-content">
-                                <h3>内贸部</h3>
-                                <div class="company">河南嘉屹达新材料科技有限公司</div>
-                                <div class="period">2025.1.2 - 至今</div>
+                                <h3>研发部</h3>
+                                <div class="company">河南深寻人工智能科技有限公司</div>
+                                <div class="period">2024.6 - 2026.6</div>
                                 <div class="job-description">
                                     <div class="responsibilities">
                                         <h4>主要职责</h4>
                                         <ul>
-                                            <li>负责企业互联网营销矩阵构建和数字化转型战略规划</li>
-                                            <li>领导开发和实施企业知识库与大数据化工模型</li>
-                                            <li>整合大模型技术与企业ERP、财务系统，构建数字化运营平台</li>
+                                            <li>产品开发全程主导，包括项目立项、产品方案输出、结构设计、设备选型、工程图输出</li>
+                                            <li>对接字节包（字节跳动）、千问（阿里巴巴）大模型厂家，沟通商用企业级API对接使用</li>
+                                            <li>核心架构设计：基于LangChain4j框架完整AI服务链，整合Qwen3大模型与RAG知识库</li>
+                                            <li>新产品成功申请专利，推动企业AI技术落地应用</li>
                                         </ul>
                                     </div>
                                     <div class="achievements">
                                         <h4>主要成就</h4>
                                         <ul>
-                                            <li>建立了企业全渠道营销体系，提升了线上展示效果，海外询盘量增长85%</li>
-                                            <li>开发的化工材料知识库减少研发决策时间40%，加速产品迭代周期</li>
-                                            <li>数字化运营平台整合实现了管理效率提升32%，降低运营成本约28%</li>
+                                            <li>成功部署企业级AI大模型，实现知识库智能问答，员工查询效率提升200%</li>
+                                            <li>开发的AI产品方案输出系统，缩短方案编制时间60%，提高客户满意度</li>
+                                            <li>完成多个企业级AI项目落地，累计为客户节省人力成本超过500万元</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="contact">证明人：林建海 16639183029</div>
+                                <div class="contact">证明人：卢谦 17698709968</div>
                             </div>
                         </div>
 
@@ -1539,7 +1565,7 @@
                             <div class="timeline-content">
                                 <h3>技术副总</h3>
                                 <div class="company">河南立天信息技术有限公司</div>
-                                <div class="period">2020.5 - 2024.6</div>
+                                <div class="period">2019.8 - 2024.5</div>
                                 <div class="job-description">
                                     <div class="responsibilities">
                                         <h4>主要职责</h4>
@@ -1558,7 +1584,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="contact">证明人：周路 18103916565</div>
+                                <div class="contact">证明人：周腾 18103916565</div>
                             </div>
                         </div>
 
@@ -1566,7 +1592,7 @@
                             <div class="timeline-content">
                                 <h3>技术副总</h3>
                                 <div class="company">江西华城科技有限公司（河南分公司）</div>
-                                <div class="period">2013.2 - 2019.7</div>
+                                <div class="period">2011.10 - 2019.7</div>
                                 <div class="job-description">
                                     <div class="responsibilities">
                                         <h4>主要职责</h4>
@@ -1646,6 +1672,11 @@
                                 <span class="project-tag">知识库</span>
                                 <span class="project-tag">企业应用</span>
                             </div>
+                            <div class="project-gallery">
+                                <img src="images/project-jiaomei-1.webp" alt="焦煤AI项目图1" onerror="this.style.display='none'">
+                                <img src="images/project-jiaomei-2.webp" alt="焦煤AI项目图2" onerror="this.style.display='none'">
+                                <img src="images/project-jiaomei-3.webp" alt="焦煤AI项目图3" onerror="this.style.display='none'">
+                            </div>
                         </div>
                     </div>
 
@@ -1669,6 +1700,10 @@
                                 <span class="project-tag">智能管理</span>
                                 <span class="project-tag">系统部署</span>
                             </div>
+                            <div class="project-gallery">
+                                <img src="images/project-shenhua-1.webp" alt="神华项目图1" onerror="this.style.display='none'">
+                                <img src="images/project-shenhua-2.webp" alt="神华项目图2" onerror="this.style.display='none'">
+                            </div>
                         </div>
                     </div>
 
@@ -1691,6 +1726,11 @@
                                 <span class="project-tag">信息化建设</span>
                                 <span class="project-tag">系统整合</span>
                             </div>
+                            <div class="project-gallery">
+                                <img src="images/project-dangxiao-1.webp" alt="党校项目图1" onerror="this.style.display='none'">
+                                <img src="images/project-dangxiao-2.webp" alt="党校项目图2" onerror="this.style.display='none'">
+                                <img src="images/project-dangxiao-3.webp" alt="党校项目图3" onerror="this.style.display='none'">
+                            </div>
                         </div>
                     </div>
 
@@ -1712,6 +1752,11 @@
                             <div class="project-tags">
                                 <span class="project-tag">系统升级</span>
                                 <span class="project-tag">通信系统</span>
+                            </div>
+                            <div class="project-gallery">
+                                <img src="images/project-chengkong-1.webp" alt="程控项目图1" onerror="this.style.display='none'">
+                                <img src="images/project-chengkong-2.webp" alt="程控项目图2" onerror="this.style.display='none'">
+                                <img src="images/project-chengkong-3.webp" alt="程控项目图3" onerror="this.style.display='none'">
                             </div>
                         </div>
                     </div>
