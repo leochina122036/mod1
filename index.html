@@ -4,417 +4,429 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>刘亮 - 资深技术管理专家 & AI产品开发工程师</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+        :root {
+            --primary-color: #c8102e;
+            --primary-light: #e84545;
+            --secondary-color: #1a1a1a;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --text-light: #999;
+            --bg-white: #fff;
+            --bg-light: #f5f5f5;
+            --border: #e0e0e0;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #c8102e;
-            --primary-light: #e84545;
-            --secondary: #1a1a1a;
-            --accent: #ff6b6b;
-            --text-dark: #2c3e50;
-            --text-gray: #666666;
-            --text-light: #999999;
-            --bg-white: #ffffff;
-            --bg-gray: #f5f5f5;
-            --border: #e0e0e0;
-            --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             line-height: 1.8;
             color: var(--text-dark);
-            background: var(--bg-gray);
+            background: var(--bg-light);
         }
 
-        /* 顶部导航 */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background: var(--bg-white);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            height: 60px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .navbar-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar-brand {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .navbar-brand img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .navbar-menu {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .navbar-menu a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .navbar-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .navbar-menu a:hover,
-        .navbar-menu a.active {
-            color: var(--primary);
-        }
-
-        .navbar-menu a:hover::after,
-        .navbar-menu a.active::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .mobile-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-dark);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* Banner区域 */
-        .banner {
-            margin-top: 70px;
-            width: 100%;
-            min-height: 600px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 70%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat;
-            opacity: 0.5;
-            animation: float 15s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-20px, 20px) rotate(3deg); }
-        }
-
-        .banner-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .banner-content h1 {
-            font-size: 56px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .banner-subtitle {
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .banner-description {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 35px;
-            line-height: 1.8;
-        }
-
-        .banner-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 35px;
-        }
-
-        .banner-tag {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .banner-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: white;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .banner-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .profile-photo {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-bottom: 25px;
-        }
-
-        .profile-info {
-            color: white;
-        }
-
-        .profile-info h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .info-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .info-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 12px;
-            margin-bottom: 3px;
-        }
-
-        .info-value {
-            font-weight: 600;
-        }
-
-        /* 内容区域 */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* 关于我 */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 50px;
-            align-items: start;
-        }
-
-        .about-content {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
             box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
-        .about-content p {
-            font-size: 16px;
-            line-height: 2;
-            color: var(--text-gray);
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Banner区域 */
+        .resume-header {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 70%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        .resume-header .container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-info h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
             margin-bottom: 20px;
         }
 
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(255, 107, 107, 0.05) 100%);
-            border-left: 4px solid var(--primary);
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-
-        .highlight-box strong {
-            color: var(--primary);
-            font-size: 18px;
-        }
-
-        .skills-box {
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 90px;
-        }
-
-        .skills-box h3 {
+        .subtitle {
             font-size: 24px;
-            margin-bottom: 25px;
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .header-info p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 40px;
         }
 
-        .skill-tag {
-            background: var(--bg-gray);
-            color: var(--text-dark);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            cursor: default;
+        .key-achievements {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
-        .skill-tag:hover {
-            background: var(--primary);
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .achievement-number {
+            font-size: 36px;
+            font-weight: 700;
             color: white;
-            border-color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .achievement-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .header-avatar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .avatar-wrap {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .avatar {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 章节样式 */
+        .resume-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* 基本信息 */
+        .basic-info {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .info-group h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .info-label {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* 教育背景 */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .education-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .edu-date {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .edu-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .edu-institution {
+            color: var(--text-gray);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .edu-card-body p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 技能特长 */
+        .skills-container {
+            display: grid;
+            gap: 40px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category > i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .skill-category h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .skill-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .skill-level {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            background: var(--bg-light);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            transition: width 1s ease;
+        }
+
+        .skill-desc {
+            color: var(--text-gray);
+            font-size: 14px;
         }
 
         /* 工作经历 */
+        .work-history {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .timeline {
             position: relative;
             padding-left: 40px;
@@ -427,425 +439,399 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+            background: var(--primary-color);
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
             left: -47px;
-            top: 5px;
+            top: 0;
             width: 16px;
             height: 16px;
             background: white;
-            border: 3px solid var(--primary);
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
             box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
         }
 
-        .experience-card {
+        .timeline-content {
             background: white;
+            border-radius: 12px;
             padding: 35px;
-            border-radius: 16px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        .experience-card:hover {
+        .timeline-content:hover {
             box-shadow: var(--shadow-lg);
             transform: translateX(5px);
         }
 
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .experience-company {
+        .timeline-content h3 {
             font-size: 24px;
-            font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 8px;
         }
 
-        .experience-position {
-            font-size: 16px;
-            color: var(--primary);
+        .company {
+            color: var(--primary-color);
             font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 8px;
         }
 
-        .experience-date {
-            background: var(--bg-gray);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .experience-description {
+        .period {
             color: var(--text-gray);
-            font-size: 15px;
-            line-height: 1.9;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
-        .experience-description ul {
+        .job-description h4 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin: 20px 0 10px;
+        }
+
+        .job-description ul {
             list-style: none;
-            margin-top: 15px;
+            padding-left: 0;
         }
 
-        .experience-description li {
+        .job-description li {
             padding-left: 25px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             position: relative;
+            color: var(--text-gray);
         }
 
-        .experience-description li::before {
+        .job-description li::before {
             content: '▸';
             position: absolute;
             left: 0;
-            color: var(--primary);
+            color: var(--primary-color);
             font-weight: bold;
-            font-size: 18px;
         }
 
-        /* 项目展示 */
-        .projects-grid {
+        .contact {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--bg-light);
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* 项目经验 */
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            margin-bottom: 40px;
         }
 
         .project-card {
             background: white;
-            border-radius: 16px;
-            overflow: hidden;
+            border-radius: 12px;
+            padding: 30px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .project-card:hover {
             box-shadow: var(--shadow-lg);
-            transform: translateY(-8px);
+            transform: translateY(-5px);
         }
 
-        .project-image-wrapper {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
         }
 
-        .project-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+        .project-header h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            flex: 1;
         }
 
-        .project-card:hover .project-image-wrapper img {
-            transform: scale(1.1);
-        }
-
-        .project-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: white;
-            color: var(--primary);
+        .project-date {
+            background: var(--bg-light);
+            color: var(--primary-color);
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 15px;
         }
 
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .project-description {
+        .project-description p {
             color: var(--text-gray);
-            font-size: 15px;
             line-height: 1.8;
             margin-bottom: 15px;
+        }
+
+        .project-description strong {
+            color: var(--text-dark);
+        }
+
+        .project-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--bg-light);
+            color: var(--text-light);
+            font-size: 14px;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
+            margin-top: 15px;
         }
 
         .project-tag {
-            background: var(--bg-gray);
+            background: var(--bg-light);
             color: var(--text-gray);
             padding: 4px 12px;
             border-radius: 12px;
             font-size: 12px;
         }
 
-        .project-gallery {
+        .more-projects {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* AI应用 */
+        .ai-applications {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .ai-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .ai-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ai-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+
+        .ai-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ai-card-header {
+            padding: 20px 20px 10px;
+        }
+
+        .ai-card-header h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+
+        .ai-card-body {
+            padding: 0 20px 20px;
+        }
+
+        .ai-card-body h4 {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .ai-card-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ai-card-body li {
+            padding-left: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .ai-card-body li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .ai-card-footer {
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
             margin-top: 15px;
         }
 
-        .project-gallery img {
-            width: 100%;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .project-gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        /* 教育背景 */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .education-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .education-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-5px);
-        }
-
-        .education-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        .ai-tag {
+            background: var(--bg-light);
+            color: var(--text-gray);
+            padding: 4px 10px;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .education-period {
-            color: var(--primary);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .education-degree {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .education-school {
-            color: var(--text-gray);
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        .education-description {
-            color: var(--text-gray);
-            font-size: 14px;
-            line-height: 1.8;
+            font-size: 12px;
         }
 
         /* 证书展示 */
-        .certificates-grid {
+        .certificates {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
         }
 
-        .certificate-card {
+        .certificate {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        .certificate-card:hover {
+        .certificate:hover {
+            transform: scale(1.05);
             box-shadow: var(--shadow-lg);
-            transform: scale(1.02);
         }
 
-        .certificate-image-box {
+        .cert-img {
             width: 100%;
-            height: 240px;
-            background: var(--bg-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 250px;
+            background: var(--bg-light);
             overflow: hidden;
         }
 
-        .certificate-image-box img {
+        .cert-img img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             padding: 15px;
         }
 
-        .certificate-content {
-            padding: 25px;
+        .cert-info {
+            padding: 20px;
+            text-align: center;
         }
 
-        .certificate-title {
+        .cert-info h3 {
             font-size: 18px;
-            font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 8px;
         }
 
-        .certificate-issuer {
+        .cert-info p {
             color: var(--text-gray);
             font-size: 14px;
+            margin: 4px 0;
         }
 
-        /* 技能特长 */
-        .skills-grid {
+        /* 个人照片 */
+        .photos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .photo-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .photo-container:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .photo {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* 联系方式 */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
-        .skill-card {
+        .contact-item {
             background: white;
-            padding: 40px;
-            border-radius: 16px;
+            border-radius: 12px;
+            padding: 35px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            text-align: center;
         }
 
-        .skill-card:hover {
-            box-shadow: var(--shadow-lg);
+        .contact-item:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .skill-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin-bottom: 25px;
-        }
-
-        .skill-card h3 {
-            font-size: 24px;
-            margin-bottom: 18px;
-            color: var(--text-dark);
-        }
-
-        .skill-card p {
-            color: var(--text-gray);
-            line-height: 1.9;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        /* 页脚 */
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 50px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 40px;
-        }
-
-        .footer-about h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--primary-light);
-        }
-
-        .footer-about p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
+        .contact-icon {
+            font-size: 48px;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
 
-        .footer-links h4 {
+        .contact-detail h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .contact-detail p {
+            color: var(--text-gray);
             font-size: 18px;
             margin-bottom: 15px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--primary-color);
             color: white;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            display: block;
-            padding: 8px 0;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            transition: var(--transition);
         }
 
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .footer-contact {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
+        .btn-link:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
         }
 
         /* 返回顶部 */
@@ -855,7 +841,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--primary);
+            background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 50%;
@@ -863,7 +849,7 @@
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
             z-index: 999;
         }
@@ -880,828 +866,812 @@
 
         /* 响应式设计 */
         @media (max-width: 1200px) {
-            .banner-container {
-                gap: 40px;
+            .resume-header .container {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .banner-content h1 {
+            .header-info h1 {
                 font-size: 48px;
+            }
+
+            .ai-applications {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 968px) {
-            .navbar-menu {
+            .nav-menu {
                 display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: var(--shadow-lg);
-                gap: 0;
-            }
-
-            .navbar-menu.active {
-                display: flex;
-            }
-
-            .navbar-menu li {
-                padding: 12px 0;
-                border-bottom: 1px solid var(--border);
             }
 
             .mobile-toggle {
-                display: flex;
+                display: block;
             }
 
-            .banner-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                padding: 60px 20px;
-            }
-
-            .banner-content h1 {
+            .header-info h1 {
                 font-size: 40px;
             }
 
-            .banner-subtitle {
+            .subtitle {
                 font-size: 20px;
             }
 
-            .banner-description {
-                font-size: 16px;
-            }
-
-            .profile-card {
-                padding: 30px;
-            }
-
-            .profile-photo {
-                width: 180px;
-                height: 180px;
-            }
-
-            .about-grid {
+            .key-achievements {
                 grid-template-columns: 1fr;
             }
 
-            .skills-box {
-                position: static;
-            }
-
-            .section-title {
-                font-size: 36px;
-            }
-
-            .footer-content {
+            .info-container {
                 grid-template-columns: 1fr;
-                gap: 35px;
+            }
+
+            .education-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-applications {
+                grid-template-columns: 1fr;
+            }
+
+            .certificates {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 640px) {
-            section {
-                padding: 50px 0;
-            }
-
-            .banner {
-                min-height: auto;
-            }
-
-            .banner-content h1 {
+            .section-title {
                 font-size: 32px;
             }
 
-            .banner-subtitle {
-                font-size: 18px;
+            .header-info h1 {
+                font-size: 32px;
             }
 
-            .banner-stats {
-                grid-template-columns: 1fr;
+            .avatar {
+                width: 200px;
+                height: 200px;
             }
 
-            .section-title {
-                font-size: 28px;
-            }
-
-            .projects-grid,
             .education-grid,
-            .certificates-grid {
+            .certificates {
                 grid-template-columns: 1fr;
             }
 
-            .timeline {
-                padding-left: 25px;
-            }
-
-            .timeline-item::before {
-                left: -32px;
-            }
-
-            .experience-card,
-            .about-content,
-            .skill-card {
-                padding: 25px;
-            }
-
-            .info-grid {
+            .photos {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* 动画 */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <img src="images/profile.webp" alt="刘亮" onerror="this.style.display='none'">
-                <span>刘亮</span>
-            </div>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#home" class="active">首页</a></li>
-                <li><a href="#about">关于</a></li>
-                <li><a href="#experience">经历</a></li>
-                <li><a href="#education">教育</a></li>
-                <li><a href="#projects">项目</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#certificates">证书</a></li>
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="logo">刘亮</div>
+            <ul class="nav-menu">
+                <li><a href="#about">基本信息</a></li>
+                <li><a href="#education">教育背景</a></li>
+                <li><a href="#skills">技能特长</a></li>
+                <li><a href="#experience">工作经历</a></li>
+                <li><a href="#projects">项目经验</a></li>
+                <li><a href="#ai">AI应用</a></li>
+                <li><a href="#certificates">证书展示</a></li>
+                <li><a href="#contact">联系方式</a></li>
             </ul>
-            <div class="mobile-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+            <div class="mobile-toggle">☰</div>
+        </nav>
+    </header>
 
-    <!-- Banner区域 -->
-    <section id="home" class="banner">
-        <div class="banner-container">
-            <div class="banner-content">
-                <h1>刘亮</h1>
-                <div class="banner-subtitle">资深技术管理专家 & AI产品开发工程师</div>
-                <div class="banner-description">
-                    从传统项目管理到AI创新的华丽转身<br>
-                    深耕信息化与智能化领域15年，致力于用技术创造价值
-                </div>
-                <div class="banner-tags">
-                    <span class="banner-tag">🤖 AI大模型应用</span>
-                    <span class="banner-tag">📊 项目管理专家</span>
-                    <span class="banner-tag">☁️ 企业数字化</span>
-                    <span class="banner-tag">🔒 信息安全</span>
-                </div>
-                <div class="banner-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">年工作经验</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">成功项目</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">客户合作</span>
-                    </div>
-                </div>
-            </div>
-            <div class="banner-image">
-                <div class="profile-card">
-                    <img src="images/profile.webp" alt="刘亮" class="profile-photo" onerror="this.style.display='none'">
-                    <div class="profile-info">
-                        <h2>刘亮</h2>
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <div class="info-label">年龄</div>
-                                <div class="info-value">43岁</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">性别</div>
-                                <div class="info-value">男</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">民族</div>
-                                <div class="info-value">汉族</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">驾照</div>
-                                <div class="info-value">C1</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">身高</div>
-                                <div class="info-value">190cm</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">住址</div>
-                                <div class="info-value">郑州中原区</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 关于我 -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">ABOUT ME</span>
-                <h2 class="section-title">关于我</h2>
-                <p class="section-subtitle">从项目管理到AI创新，始终保持对技术的热情与追求</p>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-content">
-                    <p>
-                        <strong>2011年开始接触项目管理</strong>，从给教育局派送玩具到给大学实施精密仪器安装，再到政府级工程实施。负责过市级政府、公安局、水利局、检察院、市级人民院的工程实施。
+    <main class="main-content">
+        <!-- 简历头部 -->
+        <section class="resume-header">
+            <div class="container">
+                <div class="header-info">
+                    <h1 class="animate__animated animate__fadeInLeft">刘亮</h1>
+                    <div class="subtitle animate__animated animate__fadeInLeft animate__delay-1s">资深全栈开发工程师 | 技术架构师</div>
+                    <p class="animate__animated animate__fadeInLeft animate__delay-2s">
+                        15年IT行业经验，专注于高性能Web应用开发与系统架构设计。擅长解决复杂技术难题，提升系统性能，优化用户体验。
                     </p>
-                    <p>
-                        在与不同部门、不同角色的沟通协作中，我深刻体会到<strong>"人"在项目中的核心地位</strong>——技术可以标准化，但理解、共情与协调，才是推动项目真正落地的关键。这段经历极大地锻炼了我与人沟通的能力，也让我建立起扎实的人际关系网络和跨部门协作的敏感度。
-                    </p>
-                    <div class="highlight-box">
-                        <strong>转型AI领域：</strong> 近年来，随着人工智能技术在各行各业加速落地，我意识到这不仅是趋势。自2024年起，我加入AI产品开发团队，从传统实施到AI创新，这一路走来，变的是技术与场景，不变的是我对"用技术创造价值"的初心与热忱。
+                    <div class="key-achievements animate__animated animate__fadeInLeft animate__delay-2s">
+                        <div class="achievement-item">
+                            <div class="achievement-number">200%</div>
+                            <div class="achievement-text">提升系统响应速度</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">40+</div>
+                            <div class="achievement-text">成功交付企业级项目</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">60%</div>
+                            <div class="achievement-text">降低系统维护成本</div>
+                        </div>
                     </div>
-                    <p>
-                        目前专注于AI大模型的企业级落地应用，熟练掌握LangChain4j、FastGPT等框架，具备从需求分析到项目交付的全流程管理能力。
-                    </p>
+                    <div class="header-actions animate__animated animate__fadeInUp animate__delay-3s">
+                        <a href="#contact" class="btn">联系我</a>
+                        <a href="#projects" class="btn btn-outline">查看项目</a>
+                        <a href="jianli.pdf" class="btn btn-secondary" target="_blank">📄 下载简历</a>
+                    </div>
                 </div>
-
-                <div class="skills-box">
-                    <h3>核心技能</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">🤖 AI大模型</span>
-                        <span class="skill-tag">📊 项目管理</span>
-                        <span class="skill-tag">☁️ 云计算</span>
-                        <span class="skill-tag">🔒 信息安全</span>
-                        <span class="skill-tag">💾 数据库</span>
-                        <span class="skill-tag">🏗️ 系统架构</span>
-                        <span class="skill-tag">👥 团队管理</span>
-                        <span class="skill-tag">📱 智慧教育</span>
-                        <span class="skill-tag">🏛️ 政府项目</span>
-                        <span class="skill-tag">🎓 技术培训</span>
-                        <span class="skill-tag">🔧 技术选型</span>
-                        <span class="skill-tag">📈 业务分析</span>
-                        <span class="skill-tag">🌐 全栈开发</span>
-                        <span class="skill-tag">🚀 产品创新</span>
-                        <span class="skill-tag">💡 解决方案</span>
+                <div class="header-avatar animate__animated animate__fadeInRight">
+                    <div class="avatar-wrap">
+                        <img src="images/avatar.webp" alt="刘亮的照片" class="avatar" onerror="this.style.display='none'">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 工作经历 -->
-    <section id="experience" style="background: white;">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">EXPERIENCE</span>
-                <h2 class="section-title">工作经历</h2>
-                <p class="section-subtitle">15年职业生涯的精彩历程</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <div>
-                                <h3 class="experience-company">河南深寻人工智能科技有限公司</h3>
-                                <div class="experience-position">研发部 - 项目负责人</div>
+        <!-- 基本信息 -->
+        <section id="about" class="resume-section">
+            <div class="container">
+                <h2 class="section-title">基本信息</h2>
+                <div class="basic-info">
+                    <div class="info-container">
+                        <div class="info-group">
+                            <h3>基本资料</h3>
+                            <div class="info-item">
+                                <span class="info-label">民族</span>
+                                <span class="info-value">汉</span>
                             </div>
-                            <div class="experience-date">2024.6 - 2026.6</div>
-                        </div>
-                        <div class="experience-description">
-                            <ul>
-                                <li>产品开发全程主导，包括项目立项、产品方案输出、结构设计、设备选型、工程图输出、产品说明书、技术协议等配套资料编制，生产加工等过程技术支持</li>
-                                <li>对接字节包（字节跳动）、千问（阿里巴巴）大模型厂家，沟通商用企业级API对接使用</li>
-                                <li>核心架构设计：基于LangChain4j框架完整AI服务链，整合Qwen3大模型与RAG知识库筹</li>
-                                <li>新产品成功申请专利，推动企业AI技术落地应用</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <div>
-                                <h3 class="experience-company">河南立天信息技术有限公司</h3>
-                                <div class="experience-position">技术副总</div>
+                            <div class="info-item">
+                                <span class="info-label">性别</span>
+                                <span class="info-value">男</span>
                             </div>
-                            <div class="experience-date">2019.8 - 2024.5</div>
-                        </div>
-                        <div class="experience-description">
-                            <p style="color: #999; font-size: 14px; margin-bottom: 15px;">证明人：周腾 18103916565</p>
-                            <ul>
-                                <li>负责信息化项目实施，政府、学校、部队、公安项目经验</li>
-                                <li>有河南政府采购平台网站全部维护管理</li>
-                                <li>负责项目负责人：项目产品安装、验收和培训标准，项目完成落地负责</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <div>
-                                <h3 class="experience-company">江西华城科技有限公司（河南分公司）</h3>
-                                <div class="experience-position">技术副总</div>
+                            <div class="info-item">
+                                <span class="info-label">年龄</span>
+                                <span class="info-value">43岁</span>
                             </div>
-                            <div class="experience-date">2011.10 - 2019.7</div>
                         </div>
-                        <div class="experience-description">
-                            <p style="color: #999; font-size: 14px; margin-bottom: 15px;">证明人：赵俊玲 13663863069</p>
-                            <ul>
-                                <li>负责按标项目整体的项目实施推进工作，根据业务的需求完成项目经理职责</li>
-                                <li>负责公司产品及项目的方案，参与并完成一些重要客户的结构规划、搭建和调整</li>
-                                <li>实施教育行业：智慧校园、智慧教室、数据中心项目实施经验</li>
-                                <li>根据不同类型项目进行制慕与有针对性的项目方案和专业资料经验</li>
-                                <li>配合业务部做售前工作，跟踪大客户对业务需求</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <div>
-                                <h3 class="experience-company">北京中关村科贸市场自营</h3>
-                                <div class="experience-position">经营者</div>
+                        <div class="info-group">
+                            <h3>身份信息</h3>
+                            <div class="info-item">
+                                <span class="info-label">身高</span>
+                                <span class="info-value">190cm</span>
                             </div>
-                            <div class="experience-date">2004.10 - 2012.2</div>
+                            <div class="info-item">
+                                <span class="info-label">体重</span>
+                                <span class="info-value">90公斤</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">驾照</span>
+                                <span class="info-value">C1</span>
+                            </div>
                         </div>
-                        <div class="experience-description">
-                            <p style="color: #999; font-size: 14px; margin-bottom: 15px;">证明人：蔡启贵 13701082139</p>
-                            <ul>
-                                <li>负责服务器产品的销售工作，客户咨询、需求分析、产品演示和销售谈判</li>
-                                <li>管理散件批发业务，参与网吧网络工程项目的规划和实施，为客户提供专业的解决方案</li>
-                            </ul>
+                        <div class="info-group">
+                            <h3>联系方式</h3>
+                            <div class="info-item">
+                                <span class="info-label">手机</span>
+                                <span class="info-value">13938195869</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">微信</span>
+                                <span class="info-value">13253688995</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">住址</span>
+                                <span class="info-value">郑州市中原区</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 教育背景 -->
-    <section id="education">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">EDUCATION</span>
+        <!-- 教育背景 -->
+        <section id="education" class="resume-section" style="background: white;">
+            <div class="container">
                 <h2 class="section-title">教育背景</h2>
-                <p class="section-subtitle">持续学习，不断进步的学习历程</p>
-            </div>
-
-            <div class="education-grid">
-                <div class="education-card fade-in">
-                    <div class="education-icon">🎓</div>
-                    <div class="education-period">2000年9月 - 2004年8月</div>
-                    <h3 class="education-degree">工商管理 本科</h3>
-                    <div class="education-school">北京工商大学</div>
-                    <div class="education-description">
-                        主修课程：金融学、管理学、微观经济学、宏观经济学、中级微观经济学、中级宏观经济学等，选修：计算机网络和应用计算机应用学等
-                    </div>
-                </div>
-
-                <div class="education-card fade-in">
-                    <div class="education-icon">💻</div>
-                    <div class="education-period">2008年7月 - 2009年6月</div>
-                    <h3 class="education-degree">Java PHP 开发</h3>
-                    <div class="education-school">北大青鸟</div>
-                    <div class="education-description">
-                        主修课程：Java面向对象设计、接口等 Java API集合、IO、线程、线程池、网络编程等，PHP后端搭建运用
-                    </div>
-                </div>
-
-                <div class="education-card fade-in">
-                    <div class="education-icon">🌐</div>
-                    <div class="education-period">2013年3月 - 2013年12月</div>
-                    <h3 class="education-degree">网站建设</h3>
-                    <div class="education-school">搜外网</div>
-                    <div class="education-description">
-                        主修课程：系统SEO培训含百度搜索引擎的网站排名优化，网站前后端搭建技建，微信小程序序制作框广筹
-                    </div>
-                </div>
-
-                <div class="education-card fade-in">
-                    <div class="education-icon">📱</div>
-                    <div class="education-period">2018年5月 - 2018年9月</div>
-                    <h3 class="education-degree">网站推广</h3>
-                    <div class="education-school">百度公司</div>
-                    <div class="education-description">
-                        主修课程：针对国内网站排名新机制进行技术培训，针对自媒体、新媒体推广培训
-                    </div>
-                </div>
-
-                <div class="education-card fade-in">
-                    <div class="education-icon">🔒</div>
-                    <div class="education-period">2023年6月 - 2023年6月</div>
-                    <h3 class="education-degree">中级工程师</h3>
-                    <div class="education-school">北京天融信</div>
-                    <div class="education-description">
-                        主修课程：场景化解决方案和行业化解决方案课程组成，涵盖等级保护、数据安全、云计算等多个业务方向的知识
-                    </div>
-                </div>
-
-                <div class="education-card fade-in">
-                    <div class="education-icon">🤖</div>
-                    <div class="education-period">2024年7月 - 2024年12月</div>
-                    <h3 class="education-degree">AI 开发</h3>
-                    <div class="education-school">黑马程序员</div>
-                    <div class="education-description">
-                        主修课程：AI大模型 Agent 的原理及实践，ollama 平台使用，LLAMA 大模型 3 自然语言训练，GLM4、千问应用开发
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 项目经验 -->
-    <section id="projects" style="background: white;">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">PROJECTS</span>
-                <h2 class="section-title">精选项目</h2>
-                <p class="section-subtitle">50+成功项目中的代表性案例展示</p>
-            </div>
-
-            <div class="projects-grid">
-                <!-- AI项目展示，使用用户提供的实际图片 -->
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/ai-app1.webp" alt="AI应用项目" onerror="this.style.display='none'">
-                        <span class="project-badge">2025.05</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">河南嘉吗达 - 工业AI大模型</h3>
-                        <p class="project-description">
-                            负责配合综合部和采购部，完善机房架构，搭建企业AI大模型，完成私有化训练和企业功能实现，搭建私有知识库和大模型工业模型。
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">AI大模型</span>
-                            <span class="project-tag">私有化部署</span>
-                            <span class="project-tag">知识库</span>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="edu-date">2024.7 - 2024.12</div>
+                        <div class="edu-title">AI开发</div>
+                        <div class="edu-institution">黑马程序员</div>
+                        <div class="edu-card-body">
+                            <p>AI大模型Agent原理及实践，ollama平台使用，LLAMA大模型3自然语言训练，GLM4、千问应用开发</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project1.webp" alt="焦煤AI" onerror="this.style.display='none'">
-                        <span class="project-badge">2024.07</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">焦煤集团 - AI数据库建设</h3>
-                        <p class="project-description">
-                            利用超融合硬件，搭建本地化大模型，使用 fastgpt 建设知识库，配合企业内部飞书，员工可直接通过 AI 获取信息。证明人：袁弘正 13608634069
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">FastGPT</span>
-                            <span class="project-tag">知识库</span>
-                            <span class="project-tag">企业应用</span>
+                    <div class="education-card">
+                        <div class="edu-date">2023.6 - 2023.6</div>
+                        <div class="edu-title">售前中级工程师</div>
+                        <div class="edu-institution">北京天融信</div>
+                        <div class="edu-card-body">
+                            <p>场景化解决方案和行业化解决方案，涵盖等级保护、数据安全、云计算等多个业务方向</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project2.webp" alt="神华重机" onerror="this.style.display='none'">
-                        <span class="project-badge">2024.05</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">焦煤神华重机厂 - 办公楼信息化</h3>
-                        <p class="project-description">
-                            负责新办公楼所有信息化系统和机房部署，实现办公楼智能化管理和高效运营。项目信息科：李彦鹏 15838933616
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">智能办公</span>
-                            <span class="project-tag">机房建设</span>
-                            <span class="project-tag">系统集成</span>
+                    <div class="education-card">
+                        <div class="edu-date">2018.5 - 2018.9</div>
+                        <div class="edu-title">网站SEO推广</div>
+                        <div class="edu-institution">百度公司</div>
+                        <div class="edu-card-body">
+                            <p>主修课程：针对国内网站排名新机制进行技术培训，针对自媒体、新媒体推广培训</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project3.webp" alt="党校项目" onerror="this.style.display='none'">
-                        <span class="project-badge">2024.02</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">焦作党校 - 综合楼信息化</h3>
-                        <p class="project-description">
-                            规划和实施综合楼信息化改造，重新建设全楼 6 层所有信息化系统，提升办公管理效率。负责人：胡鹏 15893047088
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">系统升级</span>
-                            <span class="project-tag">网络安全</span>
+                    <div class="education-card">
+                        <div class="edu-date">2013.3 - 2013.12</div>
+                        <div class="edu-title">网站建设</div>
+                        <div class="edu-institution">搜外网</div>
+                        <div class="edu-card-body">
+                            <p>主修课程：系统SEO培训含百度搜索引擎的网站排名优化，网站前后端搭建技建，微信小程序制作框广筹</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project4.webp" alt="戒毒所项目" onerror="this.style.display='none'">
-                        <span class="project-badge">2023.06</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">焦作戒毒所 - 智慧改造</h3>
-                        <p class="project-description">
-                            建设 1 个平台+12 子系统（通讯指挥、周界、视频监控、建筑品检测等），实现智慧化戒毒所。负责人：赵长江 18503905591
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">智慧监控</span>
-                            <span class="project-tag">公安项目</span>
+                    <div class="education-card">
+                        <div class="edu-date">2008.7 - 2009.6</div>
+                        <div class="edu-title">Java/PHP开发</div>
+                        <div class="edu-institution">北大青鸟</div>
+                        <div class="edu-card-body">
+                            <p>主修课程：Java面向对象设计、接口等 Java API集合、IO、线程、线程池、网络编程等，PHP后端搭建运用</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project5.webp" alt="检察院项目" onerror="this.style.display='none'">
-                        <span class="project-badge">2021.08</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">马村检察院 - 智慧检察</h3>
-                        <p class="project-description">
-                            构建智慧检察系统，提高案件处理效率和透明度，负责系统网络安全和数据保护。负责人：王雪 17639180966
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">检察系统</span>
-                            <span class="project-tag">网络安全</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project6.webp" alt="实验小学" onerror="this.style.display='none'">
-                        <span class="project-badge">2021.02</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">实验小学 - 云桌面系统</h3>
-                        <p class="project-description">
-                            部署云桌面系统 10 间，涵盖云桌面、班班通、教学一体机、LED 大屏等。主任：高雨周 13703918621
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">智慧教育</span>
-                            <span class="project-tag">云桌面</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project7.webp" alt="林业5G" onerror="this.style.display='none'">
-                        <span class="project-badge">2020.06</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">焦作林业局 - 5G检测</h3>
-                        <p class="project-description">
-                            结合 5G、无人机、大数据技术，构建森林防火智能检测平台，实现从"人防"到"技防"的转变。负责人：陈亚强 18519187286
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">5G技术</span>
-                            <span class="project-tag">无人机</span>
-                            <span class="project-tag">大数据</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image-wrapper">
-                        <img src="images/project8.webp" alt="水库项目" onerror="this.style.display='none'">
-                        <span class="project-badge">2020.10</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">群英水库 - 渠道智慧化</h3>
-                        <p class="project-description">
-                            利用物联网技术实现监测控制管理，融合数据建立大数据平台，优化水资源分配。负责人：薛建军 13939162210
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">物联网</span>
-                            <span class="project-tag">水利工程</span>
+                    <div class="education-card">
+                        <div class="edu-date">2000.9 - 2004.8</div>
+                        <div class="edu-title">工商管理 本科</div>
+                        <div class="edu-institution">北京工商大学</div>
+                        <div class="edu-card-body">
+                            <p>主修课程：金融学、管理学、微观经济学、宏观经济学、中级微观经济学、中级宏观经济学等</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 技能特长 -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">SKILLS</span>
+        <!-- 技能特长 -->
+        <section id="skills" class="resume-section">
+            <div class="container">
                 <h2 class="section-title">技能特长</h2>
-                <p class="section-subtitle">全方位的技术能力与管理经验</p>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🤖</div>
-                    <h3>AI/大数据</h3>
-                    <p>
-                        <strong>热衷大模型在企业场景中的落地应用</strong>，具备大模型平台部署与调优经验，熟练使用字节包、通义千问（Qwen）等主流大模型进行企业级集成。
-                    </p>
-                    <p>
-                        <strong>掌握基于 DeepSeek 等开源框架的模型微调与本地化部署</strong>，能结合业务需求构建私有化知识库，实现智能问答、文档理解等场景的精准响应。
-                    </p>
-                    <p>
-                        <strong>擅长智慧类项目的多源数据整合与治理</strong>，具备从原始数据采集、清洗、建模到可视化分析的端到端大数据处理能力。
-                    </p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">📋</div>
-                    <h3>项目管理</h3>
-                    <p>
-                        <strong>深度参与并主导多个政企信息化及 AI 产品项目</strong>，完整经历"立项 → 需求分析 → 方案设计 → 研发实施 → 内部测试 → 专家/用户评审 → 部署上线 → 运维支持 → 项目验收与复盘"全生命周期。
-                    </p>
-                    <p>
-                        确保项目高质量交付与持续优化，具备丰富的政府、教育、企业级项目实施经验。
-                    </p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">👥</div>
-                    <h3>技术管理</h3>
-                    <p>
-                        <strong>具备技术团队从 0 到 1 的搭建与管理经验</strong>，曾带领 8-15 人规模的研发团队，涵盖前后端、算法、测试等角色。
-                    </p>
-                    <p>
-                        <strong>擅长跨部门高效协作</strong>，能精准对接商务、客户与研发三方需求，在复杂项目中推动共识、控制节奏、化解风险，保障项目稳步推进。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 专业证书 -->
-    <section id="certificates" style="background: white;">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">CERTIFICATES</span>
-                <h2 class="section-title">专业证书</h2>
-                <p class="section-subtitle">持续专业发展的见证</p>
-            </div>
-
-            <div class="certificates-grid">
-                <div class="certificate-card fade-in">
-                    <div class="certificate-image-box">
-                        <img src="images/cert1.webp" alt="本科学历证书" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>🎓</div>'">
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>🚀 全栈开发技术</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">React/Vue</span>
+                                    <span class="skill-level">精通</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                                <div class="skill-desc">主导开发过20+企业级前端项目，构建高性能交互界面</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Node.js/PHP</span>
+                                    <span class="skill-level">精通</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                                <div class="skill-desc">开发高并发API服务，支持百万级日活系统架构</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">MySQL/MongoDB</span>
+                                    <span class="skill-level">熟练</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                                <div class="skill-desc">优化复杂查询性能，设计高效数据模型与存储方案</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="certificate-content">
-                        <h4 class="certificate-title">本科学历证书</h4>
-                        <p class="certificate-issuer">北京工商大学 - 工商管理专业</p>
-                    </div>
-                </div>
 
-                <div class="certificate-card fade-in">
-                    <div class="certificate-image-box">
-                        <img src="images/cert2.webp" alt="天融信认证" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>🔧</div>'">
+                    <div class="skill-category">
+                        <h3>🤖 AI应用开发</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">大语言模型应用</span>
+                                    <span class="skill-level">熟练</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                                <div class="skill-desc">部署本地化LLM模型，构建企业知识库应用</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">AI系统集成</span>
+                                    <span class="skill-level">熟练</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 82%"></div>
+                                </div>
+                                <div class="skill-desc">将AI能力整合到现有业务系统，提升智能化水平</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="certificate-content">
-                        <h4 class="certificate-title">天融信认证售前中级工程师</h4>
-                        <p class="certificate-issuer">TOPSEC Certified Pre-sales Professional</p>
-                    </div>
-                </div>
 
-                <div class="certificate-card fade-in">
-                    <div class="certificate-image-box">
-                        <img src="images/cert3.webp" alt="百度证书" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>📱</div>'">
-                    </div>
-                    <div class="certificate-content">
-                        <h4 class="certificate-title">熊掌号100小时通关训练营</h4>
-                        <p class="certificate-issuer">百度公司 & 熊掌号</p>
-                    </div>
-                </div>
-
-                <div class="certificate-card fade-in">
-                    <div class="certificate-image-box">
-                        <img src="images/cert4.webp" alt="AI开发证书" onerror="this.parentElement.innerHTML='<div style=\'font-size:48px;\'>🤖</div>'">
-                    </div>
-                    <div class="certificate-content">
-                        <h4 class="certificate-title">人工智能开发工程师</h4>
-                        <p class="certificate-issuer">中关村黑马程序员训练营 - AI大模型应用课程</p>
+                    <div class="skill-category">
+                        <h3>📊 项目管理</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">敏捷项目管理</span>
+                                    <span class="skill-level">精通</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                                <div class="skill-desc">使用Scrum方法管理团队，缩短25%项目交付周期</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">需求分析</span>
+                                    <span class="skill-level">精通</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 92%"></div>
+                                </div>
+                                <div class="skill-desc">高效转化业务需求为技术方案，准确把握客户核心痛点</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>刘亮</h3>
-                    <p>资深技术管理专家 & AI产品开发工程师</p>
-                    <p>15年+技术管理经验，专注于AI大模型企业级落地应用、信息化项目实施与团队管理。从传统项目管理到AI创新，始终保持对技术的热情与追求。</p>
-                </div>
-                <div class="footer-links">
-                    <h4>快速链接</h4>
-                    <ul>
-                        <li><a href="#about">关于我</a></li>
-                        <li><a href="#experience">工作经历</a></li>
-                        <li><a href="#projects">项目经验</a></li>
-                        <li><a href="#skills">技能特长</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>联系方式</h4>
-                    <div class="footer-contact">📱 13938195869</div>
-                    <div class="footer-contact">💬 13253688995</div>
-                    <div class="footer-contact">📍 郑州市中原区</div>
-                    <div class="footer-contact">🚗 C1驾照</div>
+        <!-- 工作经历 -->
+        <section id="experience" class="resume-section" style="background: white;">
+            <div class="container">
+                <h2 class="section-title">工作经历</h2>
+                <div class="work-history">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>内贸部</h3>
+                                <div class="company">河南嘉屹达新材料科技有限公司</div>
+                                <div class="period">2025.1.2 - 至今</div>
+                                <div class="job-description">
+                                    <div class="responsibilities">
+                                        <h4>主要职责</h4>
+                                        <ul>
+                                            <li>负责企业互联网营销矩阵构建和数字化转型战略规划</li>
+                                            <li>领导开发和实施企业知识库与大数据化工模型</li>
+                                            <li>整合大模型技术与企业ERP、财务系统，构建数字化运营平台</li>
+                                        </ul>
+                                    </div>
+                                    <div class="achievements">
+                                        <h4>主要成就</h4>
+                                        <ul>
+                                            <li>建立了企业全渠道营销体系，提升了线上展示效果，海外询盘量增长85%</li>
+                                            <li>开发的化工材料知识库减少研发决策时间40%，加速产品迭代周期</li>
+                                            <li>数字化运营平台整合实现了管理效率提升32%，降低运营成本约28%</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="contact">证明人：林建海 16639183029</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>技术副总</h3>
+                                <div class="company">河南立天信息技术有限公司</div>
+                                <div class="period">2020.5 - 2024.6</div>
+                                <div class="job-description">
+                                    <div class="responsibilities">
+                                        <h4>主要职责</h4>
+                                        <ul>
+                                            <li>负责政府和企业信息化项目的技术方案设计与投标文件编制</li>
+                                            <li>指导项目团队完成产品部署、系统集成、验收和用户培训</li>
+                                            <li>管理技术团队，制定技术标准和质量控制流程</li>
+                                        </ul>
+                                    </div>
+                                    <div class="achievements">
+                                        <h4>主要成就</h4>
+                                        <ul>
+                                            <li>主导完成32个政府信息化项目，投标成功率达到75%，比行业平均高20%</li>
+                                            <li>优化项目交付流程，缩短项目周期平均25%，客户满意度提升至96%</li>
+                                            <li>建立标准化技术文档体系，提高团队工作效率35%，降低返工率60%</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="contact">证明人：周路 18103916565</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>技术副总</h3>
+                                <div class="company">江西华城科技有限公司（河南分公司）</div>
+                                <div class="period">2013.2 - 2019.7</div>
+                                <div class="job-description">
+                                    <div class="responsibilities">
+                                        <h4>主要职责</h4>
+                                        <ul>
+                                            <li>负责高校科研部门大数据和智慧校园项目的技术方案设计</li>
+                                            <li>组织项目实施团队，确保项目按时高质量交付</li>
+                                            <li>与高校科研部门沟通，挖掘需求并提供解决方案</li>
+                                        </ul>
+                                    </div>
+                                    <div class="achievements">
+                                        <h4>主要成就</h4>
+                                        <ul>
+                                            <li>主导的智慧校园解决方案在全省18所高校成功实施，成为行业标杆</li>
+                                            <li>研发的科研数据管理系统为高校科研效率提升45%，获省级科技进步奖</li>
+                                            <li>带领团队年均完成合同额增长30%，连续5年超额完成业绩目标</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="contact">证明人：赵俊玲 13663863069</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>经营者</h3>
+                                <div class="company">北京中关村科贸市场自营</div>
+                                <div class="period">2004.10 - 2012.2</div>
+                                <div class="job-description">
+                                    <div class="responsibilities">
+                                        <h4>主要职责</h4>
+                                        <ul>
+                                            <li>经营IT设备销售业务，提供服务器、网络设备和解决方案</li>
+                                            <li>管理散件批发业务，建立供应链管理系统</li>
+                                            <li>参与企业机房规划和网络工程实施</li>
+                                        </ul>
+                                    </div>
+                                    <div class="achievements">
+                                        <h4>主要成就</h4>
+                                        <ul>
+                                            <li>建立了稳定的企业客户群，年销售额突破800万，利润率高于行业平均20%</li>
+                                            <li>设计的供应链管理系统减少库存周转时间50%，降低资金占用25%</li>
+                                            <li>参与完成50+企业机房建设项目，客户续约率达90%以上</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="contact">证明人：蔡启贵 13701082139</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 刘亮个人简历 | 所有权利保留</p>
+        </section>
+
+        <!-- 项目经验 -->
+        <section id="projects" class="resume-section">
+            <div class="container">
+                <h2 class="section-title">项目经验</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>焦煤集团机关AI数据库建设</h3>
+                            <div class="project-date">2024.07</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p><strong>背景：</strong>焦煤集团面临内部文档管理混乱、知识检索效率低下等问题。</p>
+                                <p><strong>解决方案：</strong>搭建基于超融合架构的本地大模型，集成FastGPT知识库，与企业飞书系统深度融合。</p>
+                                <p><strong>成果：</strong>文档检索时间从平均15分钟缩短至30秒内，员工工作效率提升85%，内部知识共享通畅度提高150%。</p>
+                            </div>
+                            <div class="project-contact">负责人：袁弘正 13608634069</div>
+                            <div class="project-tags">
+                                <span class="project-tag">AI大模型</span>
+                                <span class="project-tag">知识库</span>
+                                <span class="project-tag">企业应用</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>焦煤集团神华重机厂新办公楼信息化建设</h3>
+                            <div class="project-date">2024.05</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p><strong>背景：</strong>神华重机厂新办公楼需要完整的信息化系统支撑现代办公需求。</p>
+                                <p><strong>解决方案：</strong>设计并实施了包含网络架构、数据中心、智能办公系统在内的全栈信息化解决方案。</p>
+                                <p><strong>成果：</strong>构建高可用性网络(99.99%稳定性)，实现业务系统整合度提高42%，降低IT运维成本约35%。</p>
+                            </div>
+                            <div class="project-contact">信息科：李彦鹏 15838933616</div>
+                            <div class="project-tags">
+                                <span class="project-tag">信息化建设</span>
+                                <span class="project-tag">智能管理</span>
+                                <span class="project-tag">系统部署</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>焦作党校综合楼信息化建设</h3>
+                            <div class="project-date">2024.02</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p><strong>背景：</strong>党校6层综合楼信息系统陈旧分散，需要整合升级以满足现代化教学与办公需求。</p>
+                                <p><strong>解决方案：</strong>实施了基于云架构的统一信息平台，整合教学、办公、会议、安防等多个子系统。</p>
+                                <p><strong>成果：</strong>实现跨部门数据共享效率提升70%，系统响应速度提高3倍，IT资源利用率增加45%。</p>
+                            </div>
+                            <div class="project-contact">项目负责人：胡鹏 15893047088</div>
+                            <div class="project-tags">
+                                <span class="project-tag">信息化建设</span>
+                                <span class="project-tag">系统整合</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>焦煤集团程控电话系统升级改造</h3>
+                            <div class="project-date">2023.12</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p><strong>背景：</strong>焦煤集团老旧的程控电话系统面临稳定性差、功能有限、难以扩展等问题。</p>
+                                <p><strong>解决方案：</strong>设计了基于IP-PBX架构的新一代通信系统，实现了总部与分支机构的统一管理。</p>
+                                <p><strong>成果：</strong>通话质量提升50%，系统可靠性达到99.9%，实现了与移动终端的无缝对接，通信成本降低32%。</p>
+                            </div>
+                            <div class="project-contact">计讯处负责人：袁弘正 13608634069</div>
+                            <div class="project-tags">
+                                <span class="project-tag">系统升级</span>
+                                <span class="project-tag">通信系统</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-projects">
+                    <a href="#contact" class="btn">更多项目：联系本人</a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- AI应用 -->
+        <section id="ai" class="resume-section" style="background: white;">
+            <div class="container">
+                <h2 class="section-title">大模型应用</h2>
+                <div class="ai-applications">
+                    <div class="ai-card">
+                        <div class="ai-card-image">
+                            <img src="images/ai-app1.webp" alt="企业级知识库" onerror="this.style.display='none'">
+                        </div>
+                        <div class="ai-card-header">
+                            <h3>企业级知识库</h3>
+                        </div>
+                        <div class="ai-card-body">
+                            <h4>智慧企业大脑</h4>
+                            <ul>
+                                <li>基于大模型的智能文档处理和知识提取</li>
+                                <li>多源异构数据整合与语义理解</li>
+                                <li>智能问答和知识推荐系统</li>
+                                <li>知识图谱构建与可视化</li>
+                            </ul>
+                            <div class="ai-card-footer">
+                                <span class="ai-tag">知识图谱</span>
+                                <span class="ai-tag">语义理解</span>
+                                <span class="ai-tag">智能问答</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-card">
+                        <div class="ai-card-image">
+                            <img src="images/ai-app2.webp" alt="AI客户画像系统" onerror="this.style.display='none'">
+                        </div>
+                        <div class="ai-card-header">
+                            <h3>AI客户画像系统</h3>
+                        </div>
+                        <div class="ai-card-body">
+                            <h4>精准用户洞察</h4>
+                            <ul>
+                                <li>多维度客户数据分析与建模</li>
+                                <li>行为轨迹追踪与预测</li>
+                                <li>个性化推荐引擎</li>
+                                <li>实时画像更新与标签管理</li>
+                            </ul>
+                            <div class="ai-card-footer">
+                                <span class="ai-tag">数据分析</span>
+                                <span class="ai-tag">用户画像</span>
+                                <span class="ai-tag">智能推荐</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-card">
+                        <div class="ai-card-image">
+                            <img src="images/ai-app3.webp" alt="CRM客户信息系统" onerror="this.style.display='none'">
+                        </div>
+                        <div class="ai-card-header">
+                            <h3>CRM客户信息系统</h3>
+                        </div>
+                        <div class="ai-card-body">
+                            <h4>智能客户关系引擎</h4>
+                            <ul>
+                                <li>智能客户关系管理与分析</li>
+                                <li>销售线索智能分配与跟进</li>
+                                <li>客户服务自动化与优化</li>
+                                <li>商机预测与风险评估</li>
+                            </ul>
+                            <div class="ai-card-footer">
+                                <span class="ai-tag">CRM</span>
+                                <span class="ai-tag">智能分析</span>
+                                <span class="ai-tag">自动化</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-card">
+                        <div class="ai-card-image">
+                            <img src="images/ai-app4.webp" alt="大模型部署应用" onerror="this.style.display='none'">
+                        </div>
+                        <div class="ai-card-header">
+                            <h3>deepseek大模型部署</h3>
+                        </div>
+                        <div class="ai-card-body">
+                            <h4>私有化AI引擎部署</h4>
+                            <ul>
+                                <li>大规模语言模型私有化部署</li>
+                                <li>领域知识适配与微调</li>
+                                <li>多场景业务集成应用</li>
+                                <li>性能优化与监控</li>
+                            </ul>
+                            <div class="ai-card-footer">
+                                <span class="ai-tag">Deepseek</span>
+                                <span class="ai-tag">LLM</span>
+                                <span class="ai-tag">私有化部署</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 证书展示 -->
+        <section id="certificates" class="resume-section">
+            <div class="container">
+                <h2 class="section-title">证书展示</h2>
+                <div class="certificates">
+                    <div class="certificate">
+                        <div class="cert-img">
+                            <img src="images/cert1.webp" alt="毕业证书" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>🎓</div>'">
+                        </div>
+                        <div class="cert-info">
+                            <h3>毕业证书</h3>
+                            <p>学术成就证明</p>
+                            <p>颁发机构：北京工商大学</p>
+                            <p>获得时间：2004年</p>
+                        </div>
+                    </div>
+
+                    <div class="certificate">
+                        <div class="cert-img">
+                            <img src="images/cert2.webp" alt="天融信工程师" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>🔧</div>'">
+                        </div>
+                        <div class="cert-info">
+                            <h3>天融信工程师</h3>
+                            <p>专业技能认证</p>
+                            <p>颁发机构：天融信</p>
+                            <p>获得时间：2023年</p>
+                        </div>
+                    </div>
+
+                    <div class="certificate">
+                        <div class="cert-img">
+                            <img src="images/cert3.webp" alt="百度SEO" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>📱</div>'">
+                        </div>
+                        <div class="cert-info">
+                            <h3>百度SEO</h3>
+                            <p>搜索引擎优化专家</p>
+                            <p>颁发机构：百度公司</p>
+                            <p>获得时间：2018年</p>
+                        </div>
+                    </div>
+
+                    <div class="certificate">
+                        <div class="cert-img">
+                            <img src="images/cert4.webp" alt="AI大模型应用" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>🤖</div>'">
+                        </div>
+                        <div class="cert-info">
+                            <h3>AI大模型应用</h3>
+                            <p>AI人工智能</p>
+                            <p>颁发机构：黑马程序员</p>
+                            <p>获得时间：2024年</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 个人照片 -->
+        <section id="photos" class="resume-section" style="background: white;">
+            <div class="container">
+                <h2 class="section-title">个人照片</h2>
+                <div class="photos">
+                    <div class="photo-item">
+                        <div class="photo-container">
+                            <img src="images/photo1.webp" alt="工作中的我" class="photo" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <div class="photo-container">
+                            <img src="images/photo2.webp" alt="休闲中的我" class="photo" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact" class="resume-section">
+            <div class="container">
+                <h2 class="section-title">联系方式</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-detail">
+                                <h3>手机</h3>
+                                <p>13938195869</p>
+                                <div class="contact-action">
+                                    <a href="tel:13938195869" class="btn-link">立即拨打</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-detail">
+                                <h3>微信</h3>
+                                <p>13253688995</p>
+                                <div class="contact-action">
+                                    <a href="javascript:void(0)" class="btn-link">添加微信</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-detail">
+                                <h3>邮箱</h3>
+                                <p>2495324154@qq.com</p>
+                                <div class="contact-action">
+                                    <a href="mailto:2495324154@qq.com" class="btn-link">发送邮件</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-detail">
+                                <h3>地址</h3>
+                                <p>郑州市中原区</p>
+                                <div class="contact-action">
+                                    <a href="https://map.baidu.com/search/郑州市中原区" target="_blank" class="btn-link">查看地图</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- 返回顶部 -->
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
     <script>
-        // 移动端菜单切换
-        function toggleMobileMenu() {
-            document.getElementById('navbarMenu').classList.toggle('active');
-        }
-
-        // 滚动时导航栏效果
+        // 滚动时显示返回顶部按钮
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            // 返回顶部按钮
             const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
             }
-        });
-
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 导航激活状态
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.navbar-menu a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
         });
 
         // 平滑滚动
@@ -1714,11 +1684,19 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // 关闭移动端菜单
-                    document.getElementById('navbarMenu').classList.remove('active');
                 }
             });
         });
+
+        // 移动端菜单切换
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
