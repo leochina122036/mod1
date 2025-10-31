@@ -10,14 +10,17 @@
             --primary-color: #c8102e;
             --primary-light: #e84545;
             --secondary-color: #1a1a1a;
+            --accent-color: #ff6b6b;
             --text-dark: #2c3e50;
             --text-gray: #666;
             --text-light: #999;
             --bg-white: #fff;
             --bg-light: #f5f5f5;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --border: #e0e0e0;
             --shadow: 0 2px 12px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-xl: 0 15px 35px rgba(0,0,0,0.15);
             --transition: all 0.3s ease;
         }
 
@@ -32,6 +35,7 @@
             line-height: 1.8;
             color: var(--text-dark);
             background: var(--bg-light);
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,7 +44,7 @@
             padding: 0 20px;
         }
 
-        /* 导航栏 */
+        /* 导航栏 - 体现专业性 */
         header {
             position: fixed;
             top: 0;
@@ -50,6 +54,11 @@
             box-shadow: var(--shadow);
             z-index: 1000;
             backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-lg);
         }
 
         nav {
@@ -63,9 +72,12 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-menu {
@@ -79,10 +91,24 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
         }
 
-        .nav-menu a:hover {
-            color: var(--primary-color);
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
         }
 
         .mobile-toggle {
@@ -92,11 +118,11 @@
             color: var(--text-dark);
         }
 
-        /* Banner区域 */
+        /* Banner区域 - 第一印象最重要 */
         .resume-header {
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--bg-gradient);
             display: flex;
             align-items: center;
             padding-top: 80px;
@@ -104,6 +130,7 @@
             overflow: hidden;
         }
 
+        /* 动态背景装饰 */
         .resume-header::before {
             content: '';
             position: absolute;
@@ -115,9 +142,19 @@
             animation: float 15s ease-in-out infinite;
         }
 
+        .resume-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(180deg, transparent 0%, rgba(245, 245, 245, 0.5) 50%, var(--bg-light) 100%);
+        }
+
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-30px, 30px); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(3deg); }
         }
 
         .resume-header .container {
@@ -131,26 +168,28 @@
         }
 
         .header-info h1 {
-            font-size: 56px;
+            font-size: 58px;
             font-weight: 800;
             color: white;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .subtitle {
-            font-size: 24px;
+            font-size: 26px;
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 20px;
             font-weight: 600;
         }
 
-        .header-info p {
+        .header-info > p {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.8;
             margin-bottom: 40px;
         }
 
+        /* 关键成就 - 用数据说话 */
         .key-achievements {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -161,21 +200,28 @@
         .achievement-item {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 25px;
+            border-radius: 16px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .achievement-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
         }
 
         .achievement-number {
-            font-size: 36px;
-            font-weight: 700;
+            font-size: 42px;
+            font-weight: 800;
             color: white;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .achievement-text {
-            font-size: 14px;
+            font-size: 15px;
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -186,21 +232,22 @@
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 14px 32px;
             background: white;
             color: var(--primary-color);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
         .btn-outline {
@@ -209,23 +256,40 @@
             border: 2px solid white;
         }
 
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
         .btn-secondary {
             background: var(--primary-color);
             color: white;
         }
 
+        .btn-secondary:hover {
+            background: var(--primary-light);
+        }
+
+        /* 个人头像卡片 - 建立信任感 */
         .header-avatar {
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .avatar-wrap {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
             padding: 40px;
-            border-radius: 24px;
+            border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .avatar-wrap:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
         }
 
         .avatar {
@@ -233,21 +297,21 @@
             height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 6px solid white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         /* 章节样式 */
         .resume-section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 42px;
-            font-weight: 700;
+            font-size: 48px;
+            font-weight: 800;
             color: var(--text-dark);
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             position: relative;
         }
 
@@ -257,39 +321,58 @@
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
         }
 
-        /* 基本信息 */
+        .section-intro {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-gray);
+            margin: 30px auto 60px;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        /* 基本信息 - 快速了解候选人 */
         .basic-info {
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: var(--shadow);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--bg-light);
         }
 
         .info-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 50px;
         }
 
         .info-group h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 25px;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 12px;
+            display: inline-block;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            padding: 15px 0;
             border-bottom: 1px solid var(--bg-light);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background: var(--bg-light);
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 0 -10px;
         }
 
         .info-label {
@@ -299,57 +382,74 @@
 
         .info-value {
             color: var(--text-dark);
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        /* 教育背景 */
+        /* 教育背景 - 展示学习能力 */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 30px;
         }
 
         .education-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: 35px;
             box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
+            border-top: 5px solid var(--primary-color);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '🎓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 50px;
+            opacity: 0.1;
         }
 
         .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-top-color: var(--accent-color);
         }
 
         .edu-date {
             color: var(--primary-color);
             font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: rgba(200, 16, 46, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .edu-title {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             color: var(--text-dark);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .edu-institution {
             color: var(--text-gray);
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-size: 16px;
         }
 
         .edu-card-body p {
             color: var(--text-gray);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* 技能特长 */
+        /* 技能特长 - 核心竞争力展示 */
         .skills-container {
             display: grid;
             gap: 40px;
@@ -357,79 +457,117 @@
 
         .skill-category {
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: var(--shadow);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
         }
 
-        .skill-category > i {
-            font-size: 48px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            display: block;
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05), rgba(255, 107, 107, 0.05));
+            border-radius: 50%;
         }
 
         .skill-category h3 {
-            font-size: 28px;
-            margin-bottom: 30px;
+            font-size: 32px;
+            margin-bottom: 35px;
             color: var(--text-dark);
+            position: relative;
         }
 
         .skills-grid {
             display: grid;
-            gap: 25px;
+            gap: 30px;
         }
 
         .skill-item {
-            padding: 20px 0;
+            padding: 25px 0;
             border-bottom: 1px solid var(--bg-light);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-color);
         }
 
         .skill-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .skill-name {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-dark);
+            font-size: 18px;
         }
 
         .skill-level {
             color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 700;
+            background: rgba(200, 16, 46, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 14px;
         }
 
         .skill-bar {
             background: var(--bg-light);
-            height: 8px;
-            border-radius: 4px;
+            height: 10px;
+            border-radius: 5px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .skill-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
-            transition: width 1s ease;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 1.5s ease;
+            border-radius: 5px;
+            position: relative;
         }
 
         .skill-desc {
             color: var(--text-gray);
-            font-size: 14px;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        /* 工作经历 */
+        /* 工作经历 - 职业发展轨迹 */
         .work-history {
             position: relative;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .timeline {
             position: relative;
-            padding-left: 40px;
+            padding-left: 50px;
         }
 
         .timeline::before {
@@ -438,64 +576,85 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 3px;
-            background: var(--primary-color);
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -47px;
-            top: 0;
-            width: 16px;
-            height: 16px;
+            left: -58px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
             background: white;
-            border: 3px solid var(--primary-color);
+            border: 4px solid var(--primary-color);
             border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
+            box-shadow: 0 0 0 6px rgba(200, 16, 46, 0.1);
+            z-index: 1;
         }
 
         .timeline-content {
             background: white;
-            border-radius: 12px;
-            padding: 35px;
+            border-radius: 16px;
+            padding: 40px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
         }
 
         .timeline-content:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateX(5px);
+            box-shadow: var(--shadow-xl);
+            transform: translateX(8px);
         }
 
         .timeline-content h3 {
-            font-size: 24px;
+            font-size: 26px;
             color: var(--text-dark);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 800;
         }
 
         .company {
             color: var(--primary-color);
-            font-weight: 600;
-            font-size: 18px;
-            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
         .period {
             color: var(--text-gray);
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 15px;
+            margin-bottom: 25px;
+            background: var(--bg-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .job-description h4 {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--text-dark);
-            margin: 20px 0 10px;
+            margin: 25px 0 15px;
+            font-weight: 700;
         }
 
         .job-description ul {
@@ -504,10 +663,11 @@
         }
 
         .job-description li {
-            padding-left: 25px;
-            margin-bottom: 10px;
+            padding-left: 30px;
+            margin-bottom: 12px;
             position: relative;
             color: var(--text-gray);
+            line-height: 1.8;
         }
 
         .job-description li::before {
@@ -516,75 +676,105 @@
             left: 0;
             color: var(--primary-color);
             font-weight: bold;
+            font-size: 20px;
         }
 
         .contact {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--bg-light);
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px dashed var(--bg-light);
             color: var(--text-light);
             font-size: 14px;
         }
 
-        /* 项目经验 */
+        /* 项目经验 - 实战能力证明 */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 35px;
+            margin-bottom: 50px;
         }
 
         .project-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 16px;
+            overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
         .project-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-10px);
+        }
+
+        /* 项目图片区域 */
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-body {
+            padding: 35px;
         }
 
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: start;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .project-header h3 {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--text-dark);
+            font-weight: 800;
             flex: 1;
+            line-height: 1.4;
         }
 
         .project-date {
-            background: var(--bg-light);
-            color: var(--primary-color);
-            padding: 6px 14px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 700;
             white-space: nowrap;
             margin-left: 15px;
+            box-shadow: 0 2px 8px rgba(200, 16, 46, 0.3);
         }
 
         .project-description p {
             color: var(--text-gray);
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 15px;
+            font-size: 15px;
         }
 
         .project-description strong {
             color: var(--text-dark);
+            font-weight: 700;
         }
 
         .project-contact {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--bg-light);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--bg-light);
             color: var(--text-light);
             font-size: 14px;
         }
@@ -592,41 +782,43 @@
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .project-tag {
-            background: var(--bg-light);
-            color: var(--text-gray);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.1), rgba(255, 107, 107, 0.1));
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(200, 16, 46, 0.2);
         }
 
         .more-projects {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        /* AI应用 */
+        /* AI应用 - 展示前沿技术能力 */
         .ai-applications {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            gap: 30px;
         }
 
         .ai-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
         .ai-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
         }
 
         .ai-card-image {
@@ -634,31 +826,50 @@
             height: 200px;
             overflow: hidden;
             background: var(--bg-light);
+            position: relative;
+        }
+
+        .ai-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.3));
         }
 
         .ai-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .ai-card:hover .ai-card-image img {
+            transform: scale(1.15);
         }
 
         .ai-card-header {
-            padding: 20px 20px 10px;
+            padding: 25px 25px 15px;
         }
 
         .ai-card-header h3 {
-            font-size: 18px;
+            font-size: 19px;
             color: var(--text-dark);
+            font-weight: 800;
+            line-height: 1.4;
         }
 
         .ai-card-body {
-            padding: 0 20px 20px;
+            padding: 0 25px 25px;
         }
 
         .ai-card-body h4 {
             font-size: 16px;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-weight: 700;
         }
 
         .ai-card-body ul {
@@ -667,11 +878,12 @@
         }
 
         .ai-card-body li {
-            padding-left: 20px;
-            margin-bottom: 8px;
+            padding-left: 22px;
+            margin-bottom: 10px;
             position: relative;
             color: var(--text-gray);
             font-size: 14px;
+            line-height: 1.6;
         }
 
         .ai-card-body li::before {
@@ -679,178 +891,226 @@
             position: absolute;
             left: 0;
             color: var(--primary-color);
+            font-size: 16px;
         }
 
         .ai-card-footer {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 15px;
+            margin-top: 18px;
         }
 
         .ai-tag {
             background: var(--bg-light);
             color: var(--text-gray);
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 12px;
             font-size: 12px;
+            font-weight: 600;
         }
 
-        /* 证书展示 */
+        /* 证书展示 - 增加可信度 */
         .certificates {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            gap: 30px;
         }
 
         .certificate {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
         .certificate:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: var(--shadow-xl);
         }
 
         .cert-img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             background: var(--bg-light);
             overflow: hidden;
+            position: relative;
+        }
+
+        .cert-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .certificate:hover .cert-img::after {
+            opacity: 1;
         }
 
         .cert-img img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            padding: 15px;
+            padding: 20px;
         }
 
         .cert-info {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
+            background: linear-gradient(180deg, white, var(--bg-light));
         }
 
         .cert-info h3 {
-            font-size: 18px;
+            font-size: 19px;
             color: var(--text-dark);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 800;
         }
 
         .cert-info p {
             color: var(--text-gray);
             font-size: 14px;
-            margin: 4px 0;
+            margin: 6px 0;
         }
 
-        /* 个人照片 */
+        /* 个人照片 - 增加亲和力 */
         .photos {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 900px;
+            gap: 40px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .photo-container {
             position: relative;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .photo-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.1), transparent);
+            opacity: 0;
             transition: var(--transition);
         }
 
         .photo-container:hover {
-            transform: scale(1.03);
-            box-shadow: var(--shadow-lg);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .photo-container:hover::after {
+            opacity: 1;
         }
 
         .photo {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: cover;
         }
 
-        /* 联系方式 */
+        /* 联系方式 - 行动召唤 */
         .contact-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .contact-info {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 35px;
         }
 
         .contact-item {
             background: white;
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: var(--shadow);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: var(--shadow-lg);
             transition: var(--transition);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05), rgba(255, 107, 107, 0.05));
+            border-radius: 50%;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
         }
 
         .contact-icon {
-            font-size: 48px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-size: 56px;
+            margin-bottom: 25px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
         }
 
         .contact-detail h3 {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 800;
         }
 
         .contact-detail p {
             color: var(--text-gray);
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .btn-link {
             display: inline-block;
-            padding: 10px 25px;
-            background: var(--primary-color);
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: var(--transition);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
         }
 
         .btn-link:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.4);
         }
 
         /* 返回顶部 */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.4);
             z-index: 999;
         }
 
@@ -860,8 +1120,8 @@
         }
 
         .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.5);
         }
 
         /* 响应式设计 */
@@ -887,6 +1147,10 @@
 
             .mobile-toggle {
                 display: block;
+            }
+
+            .section-title {
+                font-size: 36px;
             }
 
             .header-info h1 {
@@ -927,8 +1191,12 @@
         }
 
         @media (max-width: 640px) {
+            .resume-section {
+                padding: 60px 0;
+            }
+
             .section-title {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .header-info h1 {
@@ -936,8 +1204,8 @@
             }
 
             .avatar {
-                width: 200px;
-                height: 200px;
+                width: 220px;
+                height: 220px;
             }
 
             .education-grid,
@@ -948,12 +1216,20 @@
             .photos {
                 grid-template-columns: 1fr;
             }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -38px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- 导航栏 -->
-    <header>
+    <header id="header">
         <nav>
             <div class="logo">刘亮</div>
             <ul class="nav-menu">
@@ -971,7 +1247,7 @@
     </header>
 
     <main class="main-content">
-        <!-- 简历头部 -->
+        <!-- Banner区域 - 第一印象最重要 -->
         <section class="resume-header">
             <div class="container">
                 <div class="header-info">
@@ -980,7 +1256,7 @@
                     <p class="animate__animated animate__fadeInLeft animate__delay-2s">
                         15年IT行业经验，专注于高性能Web应用开发与系统架构设计。擅长解决复杂技术难题，提升系统性能，优化用户体验。
                     </p>
-                    <div class="key-achievements animate__animated animate__fadeInLeft animate__delay-2s">
+                    <div class="key-achievements animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="achievement-item">
                             <div class="achievement-number">200%</div>
                             <div class="achievement-text">提升系统响应速度</div>
@@ -995,8 +1271,8 @@
                         </div>
                     </div>
                     <div class="header-actions animate__animated animate__fadeInUp animate__delay-3s">
-                        <a href="#contact" class="btn">联系我</a>
-                        <a href="#projects" class="btn btn-outline">查看项目</a>
+                        <a href="#contact" class="btn">📞 联系我</a>
+                        <a href="#projects" class="btn btn-outline">🚀 查看项目</a>
                         <a href="jianli.pdf" class="btn btn-secondary" target="_blank">📄 下载简历</a>
                     </div>
                 </div>
@@ -1008,10 +1284,11 @@
             </div>
         </section>
 
-        <!-- 基本信息 -->
+        <!-- 基本信息 - 快速了解候选人 -->
         <section id="about" class="resume-section">
             <div class="container">
                 <h2 class="section-title">基本信息</h2>
+                <p class="section-intro">全面了解我的基本情况，为进一步沟通打下基础</p>
                 <div class="basic-info">
                     <div class="info-container">
                         <div class="info-group">
@@ -1064,10 +1341,11 @@
             </div>
         </section>
 
-        <!-- 教育背景 -->
+        <!-- 教育背景 - 展示学习能力和持续进步 -->
         <section id="education" class="resume-section" style="background: white;">
             <div class="container">
                 <h2 class="section-title">教育背景</h2>
+                <p class="section-intro">持续学习，不断进步，从本科到AI，15年学习历程展现终身学习态度</p>
                 <div class="education-grid">
                     <div class="education-card">
                         <div class="edu-date">2024.7 - 2024.12</div>
@@ -1126,10 +1404,11 @@
             </div>
         </section>
 
-        <!-- 技能特长 -->
+        <!-- 技能特长 - 核心竞争力展示 -->
         <section id="skills" class="resume-section">
             <div class="container">
                 <h2 class="section-title">技能特长</h2>
+                <p class="section-intro">作为一名资深全栈开发工程师与架构师，我拥有广泛的技术栈和实战经验，能够高效解决复杂技术挑战</p>
                 <div class="skills-container">
                     <div class="skill-category">
                         <h3>🚀 全栈开发技术</h3>
@@ -1222,10 +1501,11 @@
             </div>
         </section>
 
-        <!-- 工作经历 -->
+        <!-- 工作经历 - 职业发展轨迹 -->
         <section id="experience" class="resume-section" style="background: white;">
             <div class="container">
                 <h2 class="section-title">工作经历</h2>
+                <p class="section-intro">从IT设备销售到技术副总，再到AI产品开发，15年职业生涯展现持续成长与进步</p>
                 <div class="work-history">
                     <div class="timeline">
                         <div class="timeline-item">
@@ -1340,17 +1620,21 @@
             </div>
         </section>
 
-        <!-- 项目经验 -->
+        <!-- 项目经验 - 实战能力证明 -->
         <section id="projects" class="resume-section">
             <div class="container">
                 <h2 class="section-title">项目经验</h2>
+                <p class="section-intro">采用STAR法则展示项目经验：Situation背景、Task任务、Action行动、Result成果</p>
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-header">
-                            <h3>焦煤集团机关AI数据库建设</h3>
-                            <div class="project-date">2024.07</div>
+                        <div class="project-image">
+                            <img src="images/ai-app1.webp" alt="焦煤AI项目" onerror="this.parentElement.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
                         </div>
                         <div class="project-body">
+                            <div class="project-header">
+                                <h3>焦煤集团机关AI数据库建设</h3>
+                                <div class="project-date">2024.07</div>
+                            </div>
                             <div class="project-description">
                                 <p><strong>背景：</strong>焦煤集团面临内部文档管理混乱、知识检索效率低下等问题。</p>
                                 <p><strong>解决方案：</strong>搭建基于超融合架构的本地大模型，集成FastGPT知识库，与企业飞书系统深度融合。</p>
@@ -1366,11 +1650,14 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-header">
-                            <h3>焦煤集团神华重机厂新办公楼信息化建设</h3>
-                            <div class="project-date">2024.05</div>
+                        <div class="project-image">
+                            <img src="images/ai-app2.webp" alt="神华重机项目" onerror="this.parentElement.style.background='linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'">
                         </div>
                         <div class="project-body">
+                            <div class="project-header">
+                                <h3>焦煤集团神华重机厂新办公楼信息化建设</h3>
+                                <div class="project-date">2024.05</div>
+                            </div>
                             <div class="project-description">
                                 <p><strong>背景：</strong>神华重机厂新办公楼需要完整的信息化系统支撑现代办公需求。</p>
                                 <p><strong>解决方案：</strong>设计并实施了包含网络架构、数据中心、智能办公系统在内的全栈信息化解决方案。</p>
@@ -1386,11 +1673,14 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-header">
-                            <h3>焦作党校综合楼信息化建设</h3>
-                            <div class="project-date">2024.02</div>
+                        <div class="project-image">
+                            <img src="images/ai-app3.webp" alt="党校项目" onerror="this.parentElement.style.background='linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'">
                         </div>
                         <div class="project-body">
+                            <div class="project-header">
+                                <h3>焦作党校综合楼信息化建设</h3>
+                                <div class="project-date">2024.02</div>
+                            </div>
                             <div class="project-description">
                                 <p><strong>背景：</strong>党校6层综合楼信息系统陈旧分散，需要整合升级以满足现代化教学与办公需求。</p>
                                 <p><strong>解决方案：</strong>实施了基于云架构的统一信息平台，整合教学、办公、会议、安防等多个子系统。</p>
@@ -1405,11 +1695,14 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-header">
-                            <h3>焦煤集团程控电话系统升级改造</h3>
-                            <div class="project-date">2023.12</div>
+                        <div class="project-image">
+                            <img src="images/ai-app4.webp" alt="程控电话项目" onerror="this.parentElement.style.background='linear-gradient(135deg, #fa709a 0%, #fee140 100%)'">
                         </div>
                         <div class="project-body">
+                            <div class="project-header">
+                                <h3>焦煤集团程控电话系统升级改造</h3>
+                                <div class="project-date">2023.12</div>
+                            </div>
                             <div class="project-description">
                                 <p><strong>背景：</strong>焦煤集团老旧的程控电话系统面临稳定性差、功能有限、难以扩展等问题。</p>
                                 <p><strong>解决方案：</strong>设计了基于IP-PBX架构的新一代通信系统，实现了总部与分支机构的统一管理。</p>
@@ -1424,19 +1717,20 @@
                     </div>
                 </div>
                 <div class="more-projects">
-                    <a href="#contact" class="btn">更多项目：联系本人</a>
+                    <a href="#contact" class="btn btn-secondary">💬 更多项目：联系本人</a>
                 </div>
             </div>
         </section>
 
-        <!-- AI应用 -->
+        <!-- AI应用 - 展示前沿技术能力 -->
         <section id="ai" class="resume-section" style="background: white;">
             <div class="container">
                 <h2 class="section-title">大模型应用</h2>
+                <p class="section-intro">深耕AI大模型企业级应用，从知识库到客户画像，从CRM到私有化部署，全方位AI解决方案</p>
                 <div class="ai-applications">
                     <div class="ai-card">
                         <div class="ai-card-image">
-                            <img src="images/ai-app1.webp" alt="企业级知识库" onerror="this.style.display='none'">
+                            <img src="images/ai-app1.webp" alt="企业级知识库" onerror="this.parentElement.innerHTML='<div style=\'height:200px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-size:48px;\'>📚</div>'">
                         </div>
                         <div class="ai-card-header">
                             <h3>企业级知识库</h3>
@@ -1459,7 +1753,7 @@
 
                     <div class="ai-card">
                         <div class="ai-card-image">
-                            <img src="images/ai-app2.webp" alt="AI客户画像系统" onerror="this.style.display='none'">
+                            <img src="images/ai-app2.webp" alt="AI客户画像系统" onerror="this.parentElement.innerHTML='<div style=\'height:200px;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;color:white;font-size:48px;\'>👥</div>'">
                         </div>
                         <div class="ai-card-header">
                             <h3>AI客户画像系统</h3>
@@ -1482,7 +1776,7 @@
 
                     <div class="ai-card">
                         <div class="ai-card-image">
-                            <img src="images/ai-app3.webp" alt="CRM客户信息系统" onerror="this.style.display='none'">
+                            <img src="images/ai-app3.webp" alt="CRM客户信息系统" onerror="this.parentElement.innerHTML='<div style=\'height:200px;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;color:white;font-size:48px;\'>📊</div>'">
                         </div>
                         <div class="ai-card-header">
                             <h3>CRM客户信息系统</h3>
@@ -1505,7 +1799,7 @@
 
                     <div class="ai-card">
                         <div class="ai-card-image">
-                            <img src="images/ai-app4.webp" alt="大模型部署应用" onerror="this.style.display='none'">
+                            <img src="images/ai-app4.webp" alt="大模型部署应用" onerror="this.parentElement.innerHTML='<div style=\'height:200px;background:linear-gradient(135deg,#fa709a,#fee140);display:flex;align-items:center;justify-content:center;color:white;font-size:48px;\'>🤖</div>'">
                         </div>
                         <div class="ai-card-header">
                             <h3>deepseek大模型部署</h3>
@@ -1521,7 +1815,7 @@
                             <div class="ai-card-footer">
                                 <span class="ai-tag">Deepseek</span>
                                 <span class="ai-tag">LLM</span>
-                                <span class="ai-tag">私有化部署</span>
+                                <span class="ai-tag">私有化</span>
                             </div>
                         </div>
                     </div>
@@ -1529,14 +1823,15 @@
             </div>
         </section>
 
-        <!-- 证书展示 -->
+        <!-- 证书展示 - 增加可信度 -->
         <section id="certificates" class="resume-section">
             <div class="container">
                 <h2 class="section-title">证书展示</h2>
+                <p class="section-intro">专业资质认证，从本科学历到AI开发，持续学习的证明</p>
                 <div class="certificates">
                     <div class="certificate">
                         <div class="cert-img">
-                            <img src="images/cert1.webp" alt="毕业证书" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>🎓</div>'">
+                            <img src="images/cert1.webp" alt="毕业证书" onerror="this.parentElement.innerHTML='<div style=\'height:280px;display:flex;align-items:center;justify-content:center;font-size:68px;\'>🎓</div>'">
                         </div>
                         <div class="cert-info">
                             <h3>毕业证书</h3>
@@ -1548,7 +1843,7 @@
 
                     <div class="certificate">
                         <div class="cert-img">
-                            <img src="images/cert2.webp" alt="天融信工程师" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>🔧</div>'">
+                            <img src="images/cert2.webp" alt="天融信工程师" onerror="this.parentElement.innerHTML='<div style=\'height:280px;display:flex;align-items:center;justify-content:center;font-size:68px;\'>🔧</div>'">
                         </div>
                         <div class="cert-info">
                             <h3>天融信工程师</h3>
@@ -1560,7 +1855,7 @@
 
                     <div class="certificate">
                         <div class="cert-img">
-                            <img src="images/cert3.webp" alt="百度SEO" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>📱</div>'">
+                            <img src="images/cert3.webp" alt="百度SEO" onerror="this.parentElement.innerHTML='<div style=\'height:280px;display:flex;align-items:center;justify-content:center;font-size:68px;\'>📱</div>'">
                         </div>
                         <div class="cert-info">
                             <h3>百度SEO</h3>
@@ -1572,7 +1867,7 @@
 
                     <div class="certificate">
                         <div class="cert-img">
-                            <img src="images/cert4.webp" alt="AI大模型应用" onerror="this.parentElement.innerHTML='<div style=\'height:250px;display:flex;align-items:center;justify-content:center;font-size:48px;\'>🤖</div>'">
+                            <img src="images/cert4.webp" alt="AI大模型应用" onerror="this.parentElement.innerHTML='<div style=\'height:280px;display:flex;align-items:center;justify-content:center;font-size:68px;\'>🤖</div>'">
                         </div>
                         <div class="cert-info">
                             <h3>AI大模型应用</h3>
@@ -1585,10 +1880,11 @@
             </div>
         </section>
 
-        <!-- 个人照片 -->
+        <!-- 个人照片 - 增加亲和力 -->
         <section id="photos" class="resume-section" style="background: white;">
             <div class="container">
                 <h2 class="section-title">个人照片</h2>
+                <p class="section-intro">真实的我，工作与生活的精彩瞬间</p>
                 <div class="photos">
                     <div class="photo-item">
                         <div class="photo-container">
@@ -1605,10 +1901,11 @@
             </div>
         </section>
 
-        <!-- 联系方式 -->
+        <!-- 联系方式 - 行动召唤 -->
         <section id="contact" class="resume-section">
             <div class="container">
                 <h2 class="section-title">联系方式</h2>
+                <p class="section-intro">如果您对我感兴趣，欢迎通过以下方式联系我，期待与您的合作</p>
                 <div class="contact-container">
                     <div class="contact-info">
                         <div class="contact-item">
@@ -1617,7 +1914,7 @@
                                 <h3>手机</h3>
                                 <p>13938195869</p>
                                 <div class="contact-action">
-                                    <a href="tel:13938195869" class="btn-link">立即拨打</a>
+                                    <a href="tel:13938195869" class="btn-link">📞 立即拨打</a>
                                 </div>
                             </div>
                         </div>
@@ -1628,7 +1925,7 @@
                                 <h3>微信</h3>
                                 <p>13253688995</p>
                                 <div class="contact-action">
-                                    <a href="javascript:void(0)" class="btn-link">添加微信</a>
+                                    <a href="javascript:void(0)" class="btn-link">➕ 添加微信</a>
                                 </div>
                             </div>
                         </div>
@@ -1639,7 +1936,7 @@
                                 <h3>邮箱</h3>
                                 <p>2495324154@qq.com</p>
                                 <div class="contact-action">
-                                    <a href="mailto:2495324154@qq.com" class="btn-link">发送邮件</a>
+                                    <a href="mailto:2495324154@qq.com" class="btn-link">✉️ 发送邮件</a>
                                 </div>
                             </div>
                         </div>
@@ -1650,7 +1947,7 @@
                                 <h3>地址</h3>
                                 <p>郑州市中原区</p>
                                 <div class="contact-action">
-                                    <a href="https://map.baidu.com/search/郑州市中原区" target="_blank" class="btn-link">查看地图</a>
+                                    <a href="https://map.baidu.com/search/郑州市中原区" target="_blank" class="btn-link">🗺️ 查看地图</a>
                                 </div>
                             </div>
                         </div>
@@ -1664,14 +1961,41 @@
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
     <script>
-        // 滚动时显示返回顶部按钮
+        // 滚动时导航栏效果
         window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // 返回顶部按钮
             const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
             }
+
+            // 导航激活状态
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
         });
 
         // 平滑滚动
@@ -1688,15 +2012,29 @@
             });
         });
 
-        // 移动端菜单切换
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+        // 技能进度条动画
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
             });
-        }
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
