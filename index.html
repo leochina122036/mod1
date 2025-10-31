@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘亮 - 资深技术管理专家 & AI产品开发工程师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #ecf0f1;
+            --bg-gradient-start: #667eea;
+            --bg-gradient-end: #764ba2;
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: #f5f7fa;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .profile-info {
+            color: white;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-label {
+            opacity: 0.8;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-value {
+            font-weight: 600;
+        }
+
+        /* 章节通用样式 */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* 关于我部分 */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-left: 4px solid var(--bg-gradient-start);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            grid-column: 2;
+            grid-row: 1;
+            text-align: left;
+        }
+
+        .timeline-date {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bg-gradient-start);
+            text-align: right;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .timeline-content .company {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content .position {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-content li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--bg-gradient-start);
+            font-weight: bold;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--bg-gradient-start);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* 教育背景 */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--bg-gradient-start);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .education-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .education-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-institution {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-major {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* 项目经验 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-role {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* 技能特长 */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .skill-category p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        /* 证书展示 */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .certificate-issuer {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 60px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                grid-column: 1;
+            }
+
+            .timeline-item:nth-child(even) .timeline-date {
+                grid-column: 1;
+                text-align: left;
+            }
+
+            .timeline-date {
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .projects-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 滚动动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container">
+            <div class="logo">刘亮</div>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#experience">经历</a></li>
+                <li><a href="#education">教育</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>刘亮</h1>
+                <div class="subtitle">资深技术管理专家 & AI产品开发工程师</div>
+                <div class="description">
+                    15年+技术管理经验 | AI/大数据领域专家 | 从项目管理到AI创新的完美转型
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">年工作经验</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">项目经验</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">客户合作</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">年龄</div>
+                                <div class="info-value">43岁</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">性别</div>
+                                <div class="info-value">男</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">民族</div>
+                                <div class="info-value">汉</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">驾照</div>
+                                <div class="info-value">C1</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">身高</div>
+                                <div class="info-value">190cm</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">住址</div>
+                                <div class="info-value">郑州中原区</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about">
+        <div class="section-header fade-in">
+            <h2 class="section-title">职业概述</h2>
+            <p class="section-subtitle">从传统项目管理到AI创新的华丽转身</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p>
+                    2011年开始接触项目管理，开始参与给教育局派送玩具到给大学实施精密仪器安装，一直到开始接触政府级工程，负责过市级政府、公安局、水利局、检察院、市级人民院的工程实施。在与不同部门、不同角色的沟通协作中，我深刻体会到"人"在项目中的核心地位——技术可以标准化，但理解、共情与协调，才是推动项目真正落地的关键。
+                </p>
+                <p>
+                    这段经历极大地锻炼了我与人沟通的能力，也让我建立起扎实的人际关系网络和跨部门协作的敏感度。
+                </p>
+                <div class="highlight-box">
+                    <strong>转型AI领域：</strong>
+                    近年来，随着人工智能技术在各行各业加速落地，我意识到这不仅是趋势。自2024年起，我加入AI产品开发团队，从传统实施到AI创新，这一路走来，变的是技术与场景，不变的是我对"用技术创造价值"的初心与热忱。
+                </div>
+            </div>
+            <div class="about-text fade-in">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem; color: var(--bg-gradient-start);">核心优势</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 1rem; background: #f8f9fa; margin-bottom: 1rem; border-radius: 10px; border-left: 4px solid var(--bg-gradient-start);">
+                        <strong>🎯 丰富的项目管理经验：</strong>15年+政府、教育、企业级项目实施经验
+                    </li>
+                    <li style="padding: 1rem; background: #f8f9fa; margin-bottom: 1rem; border-radius: 10px; border-left: 4px solid var(--bg-gradient-end);">
+                        <strong>🤖 AI技术应用能力：</strong>熟练掌握大模型部署、RAG架构、企业级AI应用开发
+                    </li>
+                    <li style="padding: 1rem; background: #f8f9fa; margin-bottom: 1rem; border-radius: 10px; border-left: 4px solid var(--bg-gradient-start);">
+                        <strong>👥 卓越的团队协作：</strong>擅长跨部门沟通，具备优秀的客户服务意识
+                    </li>
+                    <li style="padding: 1rem; background: #f8f9fa; margin-bottom: 1rem; border-radius: 10px; border-left: 4px solid var(--bg-gradient-end);">
+                        <strong>📊 全栈技术背景：</strong>从Java/PHP开发到AI工程师的完整技术路径
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section id="experience" style="background: #f8f9fa;">
+        <div class="section-header fade-in">
+            <h2 class="section-title">工作经历</h2>
+            <p class="section-subtitle">15年职业生涯的精彩历程</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2024.6 - 2026.6</div>
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <h3>河南深寻人工智能科技有限公司</h3>
+                    <div class="company">研发部</div>
+                    <ul>
+                        <li>产品开发全程主导，包括项目立项、产品方案输出、结构设计、设备选型、工程图输出、产品说明书、技术协议等配套资料编制，生产加工等过程技术支持，新产品成功申请专利</li>
+                        <li>对接字节包（字节跳动）、千问（阿里巴巴）大模型厂家，沟通商用企业级API对接使用</li>
+                        <li>核心架构设计：基于LangChain4j框架完整AI服务链，整合Qwen3大模型与RAG知识库筹</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2019.8 - 2024.5</div>
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <h3>河南立天信息技术有限公司</h3>
+                    <div class="company">技术副总</div>
+                    <div class="position">证明人：周腾 18103916565</div>
+                    <ul>
+                        <li>负责信息化项目实施，政府、学校、部队、公安项目经验</li>
+                        <li>有河南政府采购平台网站全部维护管理</li>
+                        <li>负责项目负责人：项目产品安装、验收和培训标准，项目完成落地负责</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2011.10 - 2019.7</div>
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <h3>江西华城科技有限公司（河南分公司）</h3>
+                    <div class="company">技术副总</div>
+                    <div class="position">证明人：赵俊玲 13663863069</div>
+                    <ul>
+                        <li>负责按标项目整体的项目实施推进工作，根据业务的需求完成项目经理职责</li>
+                        <li>负责公司产品及项目的方案，参与并完成一些重要客户的结构规划、搭建和调整</li>
+                        <li>实施教育行业：智慧校园、智慧教室、数据中心项目实施经验</li>
+                        <li>根据不同类型项目进行制慕与有针对性的项目方案和专业资料经验</li>
+                        <li>配合业务部做售前工作，跟踪大客户对业务需求</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2004.10 - 2012.2</div>
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <h3>北京中关村科贸市场自营</h3>
+                    <div class="company">经营者</div>
+                    <div class="position">证明人：蔡启贵 13701082139</div>
+                    <ul>
+                        <li>负责服务器产品的销售工作，客户咨询、需求分析、产品演示和销售谈判</li>
+                        <li>管理散件批发业务，参与网吧网络工程项目的规划和实施，为客户提供专业的解决方案</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education">
+        <div class="section-header fade-in">
+            <h2 class="section-title">教育背景</h2>
+            <p class="section-subtitle">持续学习，不断进步</p>
+        </div>
+        <div class="education-grid">
+            <div class="education-card fade-in">
+                <h3>工商管理 本科</h3>
+                <div class="education-period">2000年9月 - 2004年8月</div>
+                <div class="education-institution">北京工商大学</div>
+                <div class="education-major">主修课程：金融学、管理学、微观经济学、宏观经济学、中级微观经济学、中级宏观经济学等，选修：计算机网络和应用计算机应用学等</div>
+            </div>
+
+            <div class="education-card fade-in">
+                <h3>Java PHP 开发</h3>
+                <div class="education-period">2008年7月 - 2009年6月</div>
+                <div class="education-institution">北大青鸟</div>
+                <div class="education-major">主修课程：Java面向对象设计、接口等 Java API集合、IO、线程、线程池、网络编程等，PHP后端搭建运用</div>
+            </div>
+
+            <div class="education-card fade-in">
+                <h3>网站建设</h3>
+                <div class="education-period">2013年3月 - 2013年12月</div>
+                <div class="education-institution">搜外网</div>
+                <div class="education-major">主修课程：系统SEO培训含百度搜索引擎的网站排名优化，网站前后端搭建技建，微信小程序制作框广筹</div>
+            </div>
+
+            <div class="education-card fade-in">
+                <h3>网站推广</h3>
+                <div class="education-period">2018年5月 - 2018年9月</div>
+                <div class="education-institution">百度公司</div>
+                <div class="education-major">主修课程：针对国内网站排名新机制进行技术培训，针对自媒体、新媒体推广培训</div>
+            </div>
+
+            <div class="education-card fade-in">
+                <h3>中级工程师</h3>
+                <div class="education-period">2023年6月 - 2023年6月</div>
+                <div class="education-institution">北京天融信</div>
+                <div class="education-major">主修课程：场景化解决方案和行业化解决方案课程组成，涵盖等级保护、数据安全、云计算等多个业务方向的知识<br>培训现场照片：http://www.topsec.com.cn/newsx/4286.html</div>
+            </div>
+
+            <div class="education-card fade-in">
+                <h3>AI 开发</h3>
+                <div class="education-period">2024年7月 - 2024年12月</div>
+                <div class="education-institution">黑马程序员</div>
+                <div class="education-major">主修课程：AI大模型 Agent 的原理及实践，ollama 平台使用，LLAMA 大模型 3 自然语言训练，GLM4、千问应用开发</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经验 -->
+    <section id="projects" style="background: #f8f9fa;">
+        <div class="section-header fade-in">
+            <h2 class="section-title">项目经验</h2>
+            <p class="section-subtitle">精选代表性项目展示</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2025.05</div>
+                    <div class="project-title">河南嘉吗达新材料有限公司 - 工业和办公私有化大模型</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        负责配合综合部和采购部，完善现有的机房架构，采购AI配件和设备，搭建企业自己的AI大模型，完成私有化训练和企业功能实现，搭建私有知识库和大模型工业模型，加速企业智能化进步。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2024.07</div>
+                    <div class="project-title">焦煤集团周机关 AI 数据库建设</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        负责焦煤集团 AI 知识库建设，利用超融合硬件，搭建本地化大模型，使用 fastgpt 建设知识库，配合企业内部飞书，可以让员工有问顾和需求，直接通过 AI 来获取。证明人：袁弘正 13608634069
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2024.05</div>
+                    <div class="project-title">焦煤集团神华重机厂 - 新办公楼信息化建设</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        负责焦煤集团神华重机厂新办公楼的信息化建设项目，办公楼所有信息化系统和机房部署，实现了办公楼智能化管理和高效运营，神华重机项目信息科：李彦鹏 15838933616
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2024.02</div>
+                    <div class="project-title">焦作党校综合楼信息化建设</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        规划和实施焦作党校综合楼的信息化改造，重新建设全楼 6 层所有信息化系统建设，提升办公管理效率，整合各类信息系统，完善党校办公需求。党校项目负责人：胡鹏 15893047088
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2023.12</div>
+                    <div class="project-title">焦煤集团程控电话系统升级改造</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        实施焦煤集团程控电话系统的全面升级改造项目，局机关部署核心交换机（焦煤大医院、赵固一矿、赵固二矿、九里山、古汉山等），提升了网络设备更替带来的通信效率和安全性。焦煤集团计讯处负责人：袁弘正 13608634069
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2023.09</div>
+                    <div class="project-title">焦作孟州杨善柜食品科技有限公司</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        和电信公司一起合作建设 MES 智慧车间,通过集成 ERP 系统，实现车间数字化和智能化，提高生产效率和降低成本。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2023.06</div>
+                    <div class="project-title">焦作市戒毒所智慧改造项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        实施焦作市戒毒所改造项目，立项-可研-初步设计-审计-发改委-财政局-招标，跟随全套流程实施过程。项目内容利用智能化技术建设公安实战平台，建设 1 个平台+12 子系统（通讯指挥、周界、视频监控、建筑品检测、会见系统、出入人员管控、电数化、戒区交互系统等），实现智慧化戒毒所，提升戒毒所的管理水平和服务质量。焦作戒毒所项目负责人：赵长江 18503905591
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2022.05</div>
+                    <div class="project-title">焦作市党校等保 2.0 建设</div>
+                    <div class="project-role">党校负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        实施等保 2.0 标准建设，设备防火墙、上网行为管理、核心交换机、网间、审计设备安装实施，加强焦作党校信息系统的安全性，进行风险评估和安全策略的制定。党校负责人 胡鹏 15893047088
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2021.08</div>
+                    <div class="project-title">焦作马村检察院智慧检察联网项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        构建马村智慧检察系统建设，配合院区检察官调整系统，提高案件处理的效率和透明度，负责系统的网络安全和数据保护建设。马村检察院信息科负责人：王雪 17639180966
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2021.02</div>
+                    <div class="project-title">焦作市实验小学西校区云桌面</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        部署解放区教育局针对实验小学西校区部署云桌面系统 10 间，涵盖云桌面、班班通、教学一体机、LED 大屏等，为学校提供 IT 数字化建设，确保系统的稳定性和学生的学习体验。实验小学项目负责主任：高雨周 13703918621
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2020.12</div>
+                    <div class="project-title">焦作市修武公安局村镇视频监控项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        公司在建设武涉视频监控系统时，出现很多点位视频频数据不稳定，结构化相机无法采集数据，通过技术手段测算原因，解决由于数据丢失问题，提高公司对于公安部门了应急响应能力。项目负责人：杜长印 19939107936
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2020.10</div>
+                    <div class="project-title">焦作市群英水库渠道智慧化建设</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        利用物联网技术实现监测控制管理群英水渠各个渠道水流、水速、水量和实时监控画面，把这些数据融合成一个大数据平台，实施分析数据，优化水资源的分配和使用。焦作水利局项目负责人：薛建军 13939162210
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2020.08</div>
+                    <div class="project-title">焦作技师学院智慧教室和云桌面项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        实施智慧教室的建设 2 间，云桌面教室建设 2 间，并培训教师使用新系统，提升教学质量。焦作市技术学校负责主任：孙主任 15225877091
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2020.06</div>
+                    <div class="project-title">焦作林业局 5G 检测项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        项目结合 5G、无人机、大数据等技术，构建焦作化山森林防火智能智慧检测平台，通过平台实时查看森林区状况，能够更直观、实时地呈现火灾火场景，火情发展态势、扑火力量分布等情况，通过数据交换和共享，通过大数据平台实时查看，森林防火从"人防"到"技防"的智慧转变。焦作市林业局项目负责人：陈亚强 18519187286
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2018-2019</div>
+                    <div class="project-title">建设旗鱼云梯线上 SAAS 平台</div>
+                    <div class="project-role">前端负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        作为前端负责人，领导平台的 UI/UX 设计和前端开发，确保平台的用户友好性和响应速度，通过 SEO 技术搜索引擎排名，通过技术手段推广平台。网址：https://www.qyyt.com 项目负责人：李波 17719875591
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2016.03</div>
+                    <div class="project-title">中原工学院心理健康教育系统</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        实施部署心理健康教育平台，提供在线评估和咨询功能，联合专业心理咨询师，确保平台内容的专业性和有效性。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2015.05</div>
+                    <div class="project-title">郑州财经学院云桌面项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        负责云深信服桌面解决方案的部署实现教学和办公资源的集中管理，确保系统安全性和数据的可访问性。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2014.03</div>
+                    <div class="project-title">郑州航空工业管理学院</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        智能图书馆管理系统负责对接部署智能图书馆管理系统，提高图书管理效率，引入自动化服务，如自助借还书系统，提升读者体验。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2013.10</div>
+                    <div class="project-title">河南牧业经济学院虚拟现实(VR)教学实验室</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        设计并建立 VR 教学实验室，为专业实验室教学提供沉浸式体验。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2013.06</div>
+                    <div class="project-title">郑州市第一中学智能教室升级项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        规划和实施智能教室教学白板的升级改造，提升教学设施的现代化水平，确保升级过程中教学活动的无缝对接和顺利过渡。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2013.02</div>
+                    <div class="project-title">华北水利水电大学主教学楼智慧教室及VR设备装备项目</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        领导智慧教室的建设，集成 VR 设备以提升教学互动性，进行技术方案的制定和实施，确保教学技术的创新应用。
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-date">2012.04</div>
+                    <div class="project-title">焦作市 91 医院办公楼二期弱电工程</div>
+                    <div class="project-role">项目负责人</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        负责弱电系统的整体规划和设计，包括安全监控、网络布线等。协调施工团队，确保工程按照既定标准和时间节点完成。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能特长 -->
+    <section id="skills">
+        <div class="section-header fade-in">
+            <h2 class="section-title">技能特长</h2>
+            <p class="section-subtitle">全方位的技术能力与管理经验</p>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category fade-in">
+                <div class="skill-icon">🤖</div>
+                <h3>AI/大数据</h3>
+                <p><strong>热衷大模型在企业场景中的落地应用</strong>，具备大模型平台部署与调优经验，熟练使用字节包、通义千问（Qwen）等主流大模型进行企业级集成。</p>
+                <p><strong>掌握基于 DeepSeek 等开源框架的模型微调与本地化部署</strong>，能结合业务需求构建私有化知识库，实现智能问答、文档理解等场景的精准响应。</p>
+                <p><strong>擅长智慧类项目的多源数据整合与治理</strong>，具备从原始数据采集、清洗、建模到可视化分析的端到端大数据处理能力。</p>
+            </div>
+
+            <div class="skill-category fade-in">
+                <div class="skill-icon">📋</div>
+                <h3>项目经验</h3>
+                <p><strong>深度参与并主导多个政企信息化及 AI 产品项目</strong>，完整经历"立项 → 需求分析 → 方案设计 → 研发实施 → 内部测试 → 专家/用户评审 → 部署上线 → 运维支持 → 项目验收与复盘"全生命周期，确保项目高质量交付与持续优化。</p>
+            </div>
+
+            <div class="skill-category fade-in">
+                <div class="skill-icon">👥</div>
+                <h3>技术管理</h3>
+                <p><strong>具备技术团队从 0 到 1 的搭建与管理经验</strong>，曾带领 8-15 人规模的研发团队，涵盖前后端、算法、测试等角色。</p>
+                <p><strong>擅长跨部门高效协作</strong>，能精准对接商务、客户与研发三方需求，在复杂项目中推动共识、控制节奏、化解风险，保障项目稳步推进。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 证书 -->
+    <section id="certificates" style="background: #f8f9fa;">
+        <div class="section-header fade-in">
+            <h2 class="section-title">专业证书</h2>
+            <p class="section-subtitle">持续专业发展的见证</p>
+        </div>
+        <div class="certificates-grid">
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">🎓</div>
+                <h4>本科学历证书</h4>
+                <div class="certificate-issuer">北京工商大学 - 工商管理专业</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">🔧</div>
+                <h4>天融信认证售前中级工程师</h4>
+                <div class="certificate-issuer">TOPSEC Certified Pre-sales Professional</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">📱</div>
+                <h4>熊掌号100小时通关训练营结业证书</h4>
+                <div class="certificate-issuer">百度公司 & 熊掌号</div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-icon">🤖</div>
+                <h4>人工智能开发工程师</h4>
+                <div class="certificate-issuer">中关村黑马程序员训练营 - AI大模型应用课程</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="contact-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">联系方式</h2>
+        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 3rem;">期待与您的合作交流</p>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">手机</div>
+                <div class="contact-value">13938195869</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div class="contact-label">微信</div>
+                <div class="contact-value">13253688995</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-label">住址</div>
+                <div class="contact-value">郑州市中原区</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🚗</div>
+                <div class="contact-label">驾照</div>
+                <div class="contact-value">C1</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2025 刘亮 - 资深技术管理专家 & AI产品开发工程师</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">15年+技术管理经验 | AI/大数据领域专家</p>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
