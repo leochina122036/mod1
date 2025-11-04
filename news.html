@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>深寻AI新闻资讯 - AI智能陪伴产品最新动态</title>
+    <meta name="description" content="深寻AI新闻资讯频道，为您提供AI智能陪伴产品的最新动态、行业资讯、企业新闻和产品更新信息">
+    <meta name="keywords" content="AI新闻,AI陪伴产品,智能机器人,健康手环,智能家居,深寻AI,企业新闻">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="深寻AI新闻资讯 - AI智能陪伴产品最新动态">
+    <meta property="og:description" content="深寻AI新闻资讯频道，为您提供AI智能陪伴产品的最新动态、行业资讯、企业新闻和产品更新信息">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shenxun-ai.com/news.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Embedded CSS -->
+    <style>
+/* ========================================
+   河南深寻AI企业官网 - 新闻页面 CSS样式
+   ======================================== */
+
+/* ========== 1. 基础样式重置 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans SC', 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========== 2. 滚动进度条 ========== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #2196F3, #64B5F6);
+    z-index: 10001;
+    transition: width 0.1s ease;
+}
+
+/* ========== 3. 导航栏样式 ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+/* Logo 样式 */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-icon {
+    margin-right: 12px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-primary {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2196F3;
+    line-height: 1.2;
+}
+
+.logo-secondary {
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* 导航菜单 */
+.nav-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #2196F3;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2196F3;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 语言切换器 */
+.language-switcher {
+    position: relative;
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid #E0E0E0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    border-color: #2196F3;
+    color: #2196F3;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    display: none;
+    z-index: 1001;
+}
+
+.language-switcher:hover .lang-dropdown {
+    display: block;
+}
+
+.lang-option {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.lang-option:hover,
+.lang-option.active {
+    background: #F5F5F5;
+    color: #2196F3;
+}
+
+/* 汉堡菜单 */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: #333;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ========== 4. 移动端菜单 ========== */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1002;
+    transition: right 0.3s ease;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.mobile-nav {
+    padding: 80px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 0;
+    border-bottom: 1px solid #F5F5F5;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    color: #2196F3;
+}
+
+.mobile-lang-options {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-lang-option {
+    text-decoration: none;
+    color: #666;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.mobile-lang-option:hover,
+.mobile-lang-option.active {
+    color: #2196F3;
+}
+
+/* ========== 5. 新闻页面特有样式 ========== */
+.news-page {
+    padding: 100px 0 60px;
+    background: #f9f9f9;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1A237E;
+    margin-bottom: 16px;
+}
+
+.page-subtitle {
+    font-size: 1.125rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 新闻分类导航 */
+.news-categories {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 10px 20px;
+    border: 2px solid #E0E0E0;
+    border-radius: 25px;
+    background: white;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    border-color: #2196F3;
+    color: #2196F3;
+    background: rgba(33, 150, 243, 0.05);
+}
+
+/* 新闻网格 */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.news-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.news-item-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.news-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover .news-item-image img {
+    transform: scale(1.05);
+}
+
+.news-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.news-item-content {
+    padding: 24px;
+}
+
+.news-item-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.news-item-date {
+    color: #666;
+    font-size: 12px;
+}
+
+.news-item-category {
+    color: #2196F3;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.news-item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1A237E;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.news-item-excerpt {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.news-item-read-more {
+    color: #2196F3;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.news-item-read-more:hover {
+    color: #1976D2;
+}
+
+/* 分页导航 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.pagination-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #E0E0E0;
+    background: white;
+    border-radius: 8px;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover,
+.pagination-btn.active {
+    background: #2196F3;
+    color: white;
+    border-color: #2196F3;
+}
+
+/* ========== 6. 页脚样式 ========== */
+.footer {
+    background: #1A237E;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact-item svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+    text-align: center;
+}
+
+.footer-copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+/* ========== 7. 返回顶部按钮 ========== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #2196F3;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+}
+
+/* ========== 8. 动画定义 ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ========== 9. 响应式设计 ========== */
+@media (max-width: 1024px) {
+    .page-title {
+        font-size: 2.25rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .language-switcher {
+        display: none;
+    }
+    
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .news-categories {
+        gap: 12px;
+    }
+    
+    .category-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .news-item-content {
+        padding: 20px;
+    }
+    
+    .news-item-title {
+        font-size: 1.125rem;
+    }
+}
+
+/* ========== 10. 无障碍支持 ========== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 焦点可见性 */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #2196F3;
+    outline-offset: 2px;
+}
+
+/* ========== 11. 打印样式 ========== */
+@media print {
+    .navbar,
+    .back-to-top,
+    .scroll-progress,
+    .pagination,
+    .category-btn {
+        display: none !important;
+    }
+    
+    body {
+        color: #000;
+        background: white;
+    }
+    
+    .news-item {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Fixed Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="深寻AI首页">
+                <div class="logo-icon">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="17.5" cy="17.5" r="17.5" fill="#2196F3"/>
+                        <path d="M17.5 8L23 15H12L17.5 8Z" fill="white"/>
+                        <circle cx="17.5" cy="22" r="4" fill="white"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-primary">深寻AI</div>
+                    <div class="logo-secondary">SHENXUN AI</div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link" data-lang-key="nav.home">首页</a>
+                <a href="services.html" class="nav-link" data-lang-key="nav.services">服务</a>
+                <a href="products.html" class="nav-link" data-lang-key="nav.products">产品</a>
+                <a href="news.html" class="nav-link active" data-lang-key="nav.news">新闻中心</a>
+                <a href="about.html" class="nav-link" data-lang-key="nav.about">关于深寻</a>
+                <a href="contact.html" class="nav-link" data-lang-key="nav.contact">联系我们</a>
+            </nav>
+
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <button class="lang-btn" id="langBtn" aria-label="选择语言">
+                    中文
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" class="lang-option active" data-lang="zh">中文</a>
+                    <a href="#" class="lang-option" data-lang="en">English</a>
+                    <a href="#" class="lang-option" data-lang="id">Bahasa Indonesia</a>
+                    <a href="#" class="lang-option" data-lang="ms">Bahasa Malaysia</a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="hamburger" id="hamburger" aria-label="打开菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenu" aria-label="关闭菜单">×</button>
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link" data-lang-key="nav.home">首页</a>
+            <a href="services.html" class="mobile-nav-link" data-lang-key="nav.services">服务</a>
+            <a href="products.html" class="mobile-nav-link" data-lang-key="nav.products">产品</a>
+            <a href="news.html" class="mobile-nav-link active" data-lang-key="nav.news">新闻中心</a>
+            <a href="about.html" class="mobile-nav-link" data-lang-key="nav.about">关于我们</a>
+            <a href="contact.html" class="mobile-nav-link" data-lang-key="nav.contact">联系我们</a>
+            
+            <div class="mobile-lang-options">
+                <a href="#" class="mobile-lang-option active" data-lang="zh">中文</a>
+                <a href="#" class="mobile-lang-option" data-lang="en">English</a>
+                <a href="#" class="mobile-lang-option" data-lang="id">Bahasa Indonesia</a>
+                <a href="#" class="mobile-lang-option" data-lang="ms">Bahasa Malaysia</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- News Page Content -->
+    <main class="news-page">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">新闻中心</h1>
+                <p class="page-subtitle">深寻AI最新动态、行业资讯、产品更新和企业新闻，为您提供AI智能陪伴产品的第一手资讯</p>
+            </header>
+
+            <!-- News Categories -->
+            <nav class="news-categories">
+                <button class="category-btn active" data-category="all">全部新闻</button>
+                <button class="category-btn" data-category="company">企业新闻</button>
+                <button class="category-btn" data-category="product">产品更新</button>
+                <button class="category-btn" data-category="industry">行业资讯</button>
+                <button class="category-btn" data-category="event">展会活动</button>
+            </nav>
+
+            <!-- News Grid -->
+            <div class="news-grid">
+                <!-- News Item 1 -->
+                <article class="news-item" data-category="event">
+                    <div class="news-item-image">
+                        <div class="news-badge">重要新闻</div>
+                    </div>
+                    <div class="news-item-content">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">2025年11月8日</span>
+                            <span class="news-item-category">展会活动</span>
+                        </div>
+                        <h3 class="news-item-title">深寻AI亮相热力象限AI智能产品交易大会，展示全龄段陪伴产品实力</h3>
+                        <p class="news-item-excerpt">11月8日，河南深寻人工智能科技有限公司携全系列AI陪伴产品亮相杭州热力象限AI智能产品交易大会，现场展示了面向东南亚市场的四大产品线，吸引众多合作伙伴关注...</p>
+                        <a href="news-detail.html" class="news-item-read-more">阅读更多 →</a>
+                    </div>
+                </article>
+
+                <!-- News Item 2 -->
+                <article class="news-item" data-category="product">
+                    <div class="news-item-image"></div>
+                    <div class="news-item-content">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">2025年11月8日</span>
+                            <span class="news-item-category">产品更新</span>
+                        </div>
+                        <h3 class="news-item-title">技术亮点：AI陪伴产品现场演示获好评</h3>
+                        <p class="news-item-excerpt">现场演示的少儿AI伴学机器人双语交互功能和中老年看护手环实时健康监测功能获得观众高度评价，多项技术创新得到行业专家认可...</p>
+                        <a href="news-detail.html" class="news-item-read-more">阅读更多 →</a>
+                    </div>
+                </article>
+
+                <!-- News Item 3 -->
+                <article class="news-item" data-category="company">
+                    <div class="news-item-image"></div>
+                    <div class="news-item-content">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">2025年11月8日</span>
+                            <span class="news-item-category">企业新闻</span>
+                        </div>
+                        <h3 class="news-item-title">合作签约：与东南亚经销商达成战略合作</h3>
+                        <p class="news-item-excerpt">展会期间与印尼、马来西亚等地经销商深度洽谈，现场签署多项合作协议，预计新增订单超过预期，进一步扩大在东南亚市场的份额...</p>
+                        <a href="news-detail.html" class="news-item-read-more">阅读更多 →</a>
+                    </div>
+                </article>
+
+                <!-- News Item 4 -->
+                <article class="news-item" data-category="company">
+                    <div class="news-item-image"></div>
+                    <div class="news-item-content">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">2025年11月8日</span>
+                            <span class="news-item-category">企业新闻</span>
+                        </div>
+                        <h3 class="news-item-title">荣誉时刻：荣获"最佳AI陪伴产品创新奖"</h3>
+                        <p class="news-item-excerpt">凭借在AI陪伴领域的技术创新和市场表现，深寻AI获得大会组委会颁发的创新奖项，这是对公司在AI智能陪伴产品领域实力的权威认可...</p>
+                        <a href="news-detail.html" class="news-item-read-more">阅读更多 →</a>
+                    </div>
+                </article>
+
+                <!-- News Item 5 -->
+                <article class="news-item" data-category="company">
+                    <div class="news-item-image"></div>
+                    <div class="news-item-content">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">2025年11月5日</span>
+                            <span class="news-item-category">企业新闻</span>
+                        </div>
+                        <h3 class="news-item-title">深寻AI新增5项AI核心技术专利，累计达55项</h3>
+                        <p class="news-item-excerpt">公司持续加大研发投入，本月新增5项AI核心技术专利，涵盖语音识别、情感计算、健康监测等关键技术领域，进一步巩固技术领先地位...</p>
+                        <a href="news-detail.html" class="news-item-read-more">阅读更多 →</a>
+                    </div>
+                </article>
+
+                <!-- News Item 6 -->
+                <article class="news-item" data-category="industry">
+                    <div class="news-item-image"></div>
+                    <div class="news-item-content">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">2025年11月3日</span>
+                            <span class="news-item-category">行业资讯</span>
+                        </div>
+                        <h3 class="news-item-title">东南亚AI陪伴市场增长迅速，深寻AI占据领先地位</h3>
+                        <p class="news-item-excerpt">最新市场报告显示，东南亚AI陪伴产品市场年增长率达35%，深寻AI凭借产品创新和本土化服务，在印尼、马来西亚等市场占据领先地位...</p>
+                        <a href="news-detail.html" class="news-item-read-more">阅读更多 →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">></button>
+            </nav>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-lang-key="footer.about.title">企业简介</h4>
+                    <p class="footer-text" data-lang-key="footer.about.content">
+                        河南深寻人工智能科技有限公司,位于焦作市解放区医药健康科技园3层,专注AI陪伴产品设计、研发、生产、销售,是国家高新技术企业。产品远销东南亚10+国家,致力于用AI技术提供有温度的陪伴服务,守护全龄段用户的幸福生活。
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-lang-key="footer.links.title">快速链接</h4>
+                    <nav class="footer-links">
+                        <a href="about.html" data-lang-key="footer.links.about">关于我们</a>
+                        <a href="products.html" data-lang-key="footer.links.products">产品中心</a>
+                        <a href="services.html" data-lang-key="footer.links.services">服务流程</a>
+                        <a href="#privacy" data-lang-key="footer.links.privacy">隐私政策</a>
+                        <a href="#careers" data-lang-key="footer.links.careers">招贤纳士</a>
+                    </nav>
+                </div>
+
+                <!-- Contact Channels -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-lang-key="footer.contact.title">联系通道</h4>
+                    <div class="footer-contacts">
+                        <div class="footer-contact-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M2 3L8 7L14 3M2 3V13H14V3H2Z" stroke="#2196F3" stroke-width="1.5"/>
+                            </svg>
+                            <span data-lang-key="footer.contact.china">中国总部: 400-888-9999</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 1C5 1 3 3 3 5C3 8 8 14 8 14C8 14 13 8 13 5C13 3 11 1 8 1Z" stroke="#2196F3" stroke-width="1.5" fill="none"/>
+                                <circle cx="8" cy="5" r="1.5" fill="#2196F3"/>
+                            </svg>
+                            <div>
+                                <div data-lang-key="footer.contact.indonesia">印尼: +62-812-3456-7890</div>
+                                <div data-lang-key="footer.contact.malaysia">马来西亚: +60-12-3456-7890</div>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#2196F3" stroke-width="1.5"/>
+                                <path d="M2 5L8 8L14 5" stroke="#2196F3" stroke-width="1.5"/>
+                            </svg>
+                            <div>
+                                <div data-lang-key="footer.contact.sales">商务: sales@shenxun-ai.com</div>
+                                <div data-lang-key="footer.contact.tech">技术: tech@shenxun-ai.com</div>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                                <circle cx="8" cy="8" r="7" fill="#25D366"/>
+                                <path d="M5 12L6 9.5C5.6 8.7 5.6 7.8 6 7C6.4 6.2 7.2 5.8 8 5.8C8.8 5.8 9.6 6.2 10 7C10.4 7.8 10.4 8.7 10 9.5L11 12" stroke="white" stroke-width="1.2" fill="none"/>
+                            </svg>
+                            <span>WhatsApp: +86-138-8888-8888</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p class="footer-copyright" data-lang-key="footer.copyright">
+                    © 2025 河南深寻人工智能科技有限公司 版权所有 | 豫ICP备XXXXXXXX号
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="返回顶部">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Embedded JavaScript -->
+    <script>
+// ========================================
+// 河南深寻AI企业官网 - 新闻页面 JavaScript
+// ========================================
+
+'use strict';
+
+// 加载检测
+console.log('新闻页面脚本已加载');
+
+// ========== 1. DOM 元素选择 ==========
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+const scrollProgress = document.getElementById('scrollProgress');
+const backToTop = document.getElementById('backToTop');
+const langBtn = document.getElementById('langBtn');
+const langDropdown = document.getElementById('langDropdown');
+
+// ========== 2. 导航栏滚动效果 ==========
+function handleNavbarScroll() {
+    const scrollY = window.scrollY;
+    
+    if (scrollY >= 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+}
+
+// ========== 3. 滚动进度条 ==========
+function updateScrollProgress() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+    const scrolled = window.scrollY;
+    const progress = (scrolled / documentHeight) * 100;
+    
+    scrollProgress.style.width = `${progress}%`;
+}
+
+// ========== 4. 返回顶部按钮 ==========
+function handleBackToTop() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    if (scrollY > windowHeight) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+}
+
+backToTop?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// ========== 5. 移动端菜单切换 ==========
+hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+closeMenu?.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+// 点击移动菜单链接后关闭菜单
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// ========== 6. 语言切换功能 ==========
+const langOptions = document.querySelectorAll('.lang-option, .mobile-lang-option');
+const currentLang = localStorage.getItem('language') || 'zh';
+
+function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    
+    const langNames = {
+        'zh': '中文',
+        'en': 'English',
+        'id': 'Bahasa Indonesia',
+        'ms': 'Bahasa Malaysia'
+    };
+    
+    if (langBtn) {
+        langBtn.childNodes[0].textContent = langNames[lang] + ' ';
+    }
+    
+    langOptions.forEach(option => {
+        if (option.dataset.lang === lang) {
+            option.classList.add('active');
+        } else {
+            option.classList.remove('active');
+        }
+    });
+    
+    console.log(`语言已切换为: ${langNames[lang]}`);
+}
+
+setLanguage(currentLang);
+
+langOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+        e.preventDefault();
+        const selectedLang = option.dataset.lang;
+        setLanguage(selectedLang);
+    });
+});
+
+// ========== 7. 平滑滚动导航 ==========
+const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const navbarHeight = navbar.offsetHeight;
+                const targetPosition = targetElement.offsetTop - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+        }
+    });
+});
+
+// ========== 8. 滚动触发动画 ==========
+function handleScrollAnimations() {
+    const elements = document.querySelectorAll('.news-item');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.85 && !element.classList.contains('fade-in-up')) {
+            element.classList.add('fade-in-up');
+        }
+    });
+}
+
+// ========== 9. 新闻分类过滤 ==========
+const categoryBtns = document.querySelectorAll('.category-btn');
+const newsItems = document.querySelectorAll('.news-item');
+
+categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+        
+        // 更新按钮状态
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // 过滤新闻项目
+        newsItems.forEach(item => {
+            const itemCategory = item.querySelector('.news-item-category').textContent;
+            
+            if (category === 'all' || itemCategory === category || item.dataset.category === category) {
+                item.style.display = 'block';
+                setTimeout(() => item.classList.add('fade-in-up'), 10);
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+
+// ========== 10. 分页导航 ==========
+const paginationBtns = document.querySelectorAll('.pagination-btn');
+paginationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (btn.textContent === '>') {
+            console.log('下一页');
+            return;
+        }
+        
+        paginationBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // 滚动到顶部
+        window.scrollTo({
+            top: document.querySelector('.news-page').offsetTop - navbar.offsetHeight,
+            behavior: 'smooth'
+        });
+        
+        console.log(`切换到第 ${btn.textContent} 页`);
+    });
+});
+
+// ========== 11. 性能优化 - 节流函数 ==========
+function throttle(func, delay = 100) {
+    let timeoutId;
+    let lastExecTime = 0;
+    
+    return function(...args) {
+        const currentTime = Date.now();
+        
+        if (currentTime - lastExecTime < delay) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                lastExecTime = currentTime;
+                func.apply(this, args);
+            }, delay);
+        } else {
+            lastExecTime = currentTime;
+            func.apply(this, args);
+        }
+    };
+}
+
+// ========== 12. 统一滚动事件处理 ==========
+const handleScroll = throttle(() => {
+    handleNavbarScroll();
+    updateScrollProgress();
+    handleBackToTop();
+    handleScrollAnimations();
+}, 100);
+
+window.addEventListener('scroll', handleScroll);
+
+// ========== 13. 页面加载完成初始化 ==========
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('新闻页面已加载');
+    
+    handleNavbarScroll();
+    updateScrollProgress();
+    handleBackToTop();
+    handleScrollAnimations();
+    
+    // 为新闻项目添加淡入动画
+    const newsItems = document.querySelectorAll('.news-item');
+    newsItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        setTimeout(() => {
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.opacity = '1';
+        }, index * 100);
+    });
+});
+
+// ========== 14. 错误处理 ==========
+window.addEventListener('error', (e) => {
+    console.error('页面错误:', e.error);
+});
+
+// ========== 15. 键盘导航支持 ==========
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if (e.key === 'Escape' && langDropdown) {
+        langDropdown.style.display = 'none';
+    }
+});
+
+console.log('%c✓ 新闻页面脚本加载完成', 'color: #4CAF50; font-weight: bold;');
+    </script>
+</body>
+</html>
